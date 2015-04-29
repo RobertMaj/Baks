@@ -5,7 +5,7 @@
  */
 package db;
 
-import baks.adm.BaksSessionBean;
+import adm.Baks.BaksSessionBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

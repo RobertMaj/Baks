@@ -6,8 +6,8 @@
 package praca;
 
 import Model.TO_Defect;
-import baks.adm.AbstractController;
-import baks.adm.BaksSessionBean;
+import adm.Baks.AbstractController;
+import adm.Baks.BaksSessionBean;
 import dao.DaoFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

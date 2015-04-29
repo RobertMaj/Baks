@@ -7,8 +7,8 @@ package platnosci;
 
 import Model.TO_Invoice;
 import Model.TO_InvoiceStatus;
-import baks.adm.AbstractController;
-import baks.adm.BaksSessionBean;
+import adm.Baks.AbstractController;
+import adm.Baks.BaksSessionBean;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;

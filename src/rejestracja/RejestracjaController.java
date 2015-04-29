@@ -7,7 +7,7 @@ package rejestracja;
 
 import Model.TO_Permission;
 import Model.TO_User;
-import baks.adm.AbstractController;
+import adm.Baks.AbstractController;
 import dao.DaoFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

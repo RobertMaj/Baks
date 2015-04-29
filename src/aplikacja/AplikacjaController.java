@@ -5,8 +5,8 @@
  */
 package aplikacja;
 
-import baks.adm.AbstractController;
-import baks.adm.BaksSessionBean;
+import adm.Baks.AbstractController;
+import adm.Baks.BaksSessionBean;
 import dao.DaoFactory;
 import dodajUzytkownika.DodajUzytkownikaController;
 import historia.HistoriaController;

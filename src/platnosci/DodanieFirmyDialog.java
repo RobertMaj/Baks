@@ -6,7 +6,7 @@
 package platnosci;
 
 import Model.TO_PaymentCompany;
-import baks.adm.BaksSessionBean;
+import adm.Baks.BaksSessionBean;
 import dao.DaoFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
