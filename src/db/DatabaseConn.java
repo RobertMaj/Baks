@@ -31,7 +31,7 @@ public class DatabaseConn {
                 instance = new DatabaseConn();
                 Class.forName("org.postgresql.Driver");
                 try {
-                    conn = DriverManager.getConnection("jdbc:postgresql://ec2-54-163-234-163.compute-1.amazonaws.com:5432/dcl0smkhcbr09u?user=dlyfimxfykibqv&password=j8XgZjA_v8Syhh6uO98x-IAJGB&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
+                    conn = DriverManager.getConnection("jdbc:postgresql://&password=j8XgZjA_v8Syhh6uO98x-IAJGB&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
                 } catch (SQLException ex) {
                     Logger.getLogger(DatabaseConn.class.getName()).log(Level.SEVERE, null, ex);
                     BaksSessionBean.getInstance().fireMessage(null, "Aplikacja", "Brak połączenia z internetem");
