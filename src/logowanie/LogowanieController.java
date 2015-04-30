@@ -57,7 +57,7 @@ public class LogowanieController extends AbstractController {
                 } catch (SQLException ex) {
                     Logger.getLogger(LogowanieController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                SwingUtilities.getWindowAncestor(widok).dispose();
+                System.exit(0);
             }
         });
 

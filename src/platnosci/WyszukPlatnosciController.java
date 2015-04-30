@@ -28,12 +28,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
 import javax.swing.table.TableColumn;
+import platnosci.zarzadzanie.Drukowanie;
 import platnosci.zarzadzanie.ZarzadzaniePlatnosciController;
 import platnosci.zarzadzanie.ZarzadzaniePlatnosciaPanel;
 
@@ -98,6 +101,7 @@ public class WyszukPlatnosciController extends AbstractController {
         ustawEnableSortowanie();
         kryteriaWyszuk.setStatus(TO_InvoiceStatus.NIE_ZAPLACONA);
         initListener();
+        widok.getBtnDrukuj().setVisible(false);
 
         widok.getBtnDrukuj().addActionListener(new ActionListener() {
 
@@ -187,7 +191,6 @@ public class WyszukPlatnosciController extends AbstractController {
 
         widok.getRadioMalejacoTermin().addActionListener(radioRosnacoMalejacoListner);
         widok.getRadioRosnacoTermin().addActionListener(radioRosnacoMalejacoListner);
-
     }
 
     private void initListener() {
@@ -274,6 +277,7 @@ public class WyszukPlatnosciController extends AbstractController {
             controllerZarzadzanie.initCon(this, widokZarz);
         }
         controllerZarzadzanie.setFaktura(wybranaFaktura);
+        controllerZarzadzanie.ustawWidocznoscKontrolek();
         przejdzDoZakladki(ZAKL_2);
     }
 
@@ -312,8 +316,10 @@ public class WyszukPlatnosciController extends AbstractController {
         if (kryteriaWyszuk != null) {
             if (kryteriaWyszuk.getStatus().equals(TO_InvoiceStatus.ZAPLACONA)) {
                 widok.getLabelDoZaplaty().setText("Suma zapłaconych");
+                widok.getBtnDrukuj().setVisible(true);
             } else if (kryteriaWyszuk.getStatus().equals(TO_InvoiceStatus.NIE_ZAPLACONA)) {
                 widok.getLabelDoZaplaty().setText("Suma do zapłaty");
+                widok.getBtnDrukuj().setVisible(false);
             } else {
                 widok.getLabelDoZaplaty().setVisible(false);
                 widok.getDoZaplatyText().setVisible(false);
@@ -341,6 +347,7 @@ public class WyszukPlatnosciController extends AbstractController {
             controllerZarzadzanie = new ZarzadzaniePlatnosciController(getConnection(), getDaoFactory());
             controllerZarzadzanie.initCon(this, widokZarz);
         }
+        controllerZarzadzanie.ustawWidocznoscKontrolek();
         przejdzDoZakladki(ZAKL_2);
     }
 
@@ -367,6 +374,13 @@ public class WyszukPlatnosciController extends AbstractController {
     }
 
     public void akcjaDrukuj() {
+        Drukowanie drukPanel = new Drukowanie(null, true);
+        drukPanel.setLocationRelativeTo(null);
+        drukPanel.setVisible(true);
+        if (!drukPanel.isDruk()) {
+            return;
+        }
+
         FileOutputStream file = null;
         File druk = null;
         try {
@@ -376,7 +390,15 @@ public class WyszukPlatnosciController extends AbstractController {
             if (!druk.exists()) {
                 druk.mkdirs();
             }
-            File wydruk = new File(druk + "/Platnosci.pdf");
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String strdate = "";
+            Date calendardate = new Date();
+            if (calendardate != null) {
+                strdate = sdf.format(calendardate.getTime());
+            }
+
+            File wydruk = new File(druk + "/Platnosci - " + strdate + ".pdf");
             if (!wydruk.exists()) {
                 try {
                     wydruk.createNewFile();
@@ -399,7 +421,7 @@ public class WyszukPlatnosciController extends AbstractController {
                 table.setWidths(columnWidths);
                 BaseFont bf = BaseFont.createFont("c:/windows/fonts/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
-                PdfPCell cell1 = new PdfPCell(new Paragraph("Lp/", new com.itextpdf.text.Font(bf, 16)));
+                PdfPCell cell1 = new PdfPCell(new Paragraph("Lp", new com.itextpdf.text.Font(bf, 16)));
                 cell1.setPaddingLeft(10);
                 cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell1.setVerticalAlignment(Element.ALIGN_LEFT);
@@ -429,11 +451,17 @@ public class WyszukPlatnosciController extends AbstractController {
                 table.addCell(cell3);
                 table.addCell(cell4);
 
+                TO_Invoice kryt = new TO_Invoice();
+                kryt.setDataDo(drukPanel.getDateDo());
+                kryt.setDataOd(drukPanel.getDateOd());
+                kryt.setStatus(TO_InvoiceStatus.ZAPLACONA);
+                List<TO_Invoice> listaFaktur = getDaoFactory().getDaoInvoice().getListaInvoiceDruk(getConnection(), kryt);
+
                 Integer i = 1;
-                for (TO_Invoice item : getLista()) {
+                for (TO_Invoice item : listaFaktur) {
                     table.addCell(getNewCell(i.toString() + "."));
                     table.addCell(getNewCell(item.getPaymentCompany().getName()));
-                    table.addCell(getNewCell(item.getTerminPlatnosc().toString()));
+                    table.addCell(getNewCell(item.getDataZaplacenia().toString()));
                     table.addCell(getNewCell(TO_Invoice.getWynikSumaKoszt(item.getKoszt()) + " zł"));
                     i++;
                 }
@@ -447,6 +475,7 @@ public class WyszukPlatnosciController extends AbstractController {
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(WyszukPlatnosciController.class.getName()).log(Level.SEVERE, null, ex);
+            BaksSessionBean.getInstance().fireMessage(widok, "Wydruk", "Pdf do którego chcesz zapisać wynik jest otwarty!\n Zamknij i spróbuj jeszcze raz.");
         } finally {
             try {
                 file.close();
@@ -463,7 +492,7 @@ public class WyszukPlatnosciController extends AbstractController {
                 Logger.getLogger(WyszukPlatnosciController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        BaksSessionBean.getInstance().fireMessage(widok, "Zapis", "Wydruk zapisany w folderze: " + System.getProperty("user.home") + "/Baks wydruki");
     }
 
     public PdfPCell getNewCell(String nazwa) {

@@ -24,6 +24,9 @@ public class TO_Invoice implements Serializable {
     private TO_PaymentCompany paymentCompany;
     private Date dataZaplacenia;
 
+    private Date dataOd;
+    private Date dataDo;
+
     public Integer getId() {
         return id;
     }
@@ -76,6 +79,22 @@ public class TO_Invoice implements Serializable {
         return paymentCompany;
     }
 
+    public Date getDataOd() {
+        return dataOd;
+    }
+
+    public void setDataOd(Date dataOd) {
+        this.dataOd = dataOd;
+    }
+
+    public Date getDataDo() {
+        return dataDo;
+    }
+
+    public void setDataDo(Date dataDo) {
+        this.dataDo = dataDo;
+    }
+
     public void setPaymentCompany(TO_PaymentCompany paymentCompany) {
         this.paymentCompany = paymentCompany;
     }
@@ -95,7 +114,7 @@ public class TO_Invoice implements Serializable {
     public void setDataZaplacenia(Date dataZaplacenia) {
         this.dataZaplacenia = dataZaplacenia;
     }
-    
+
     public static String getWynikSumaKoszt(Double kwota) {
         NumberFormat nf = NumberFormat.getInstance();
         nf.setMaximumFractionDigits(2);

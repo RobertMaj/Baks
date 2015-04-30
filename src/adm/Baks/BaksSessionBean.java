@@ -11,7 +11,11 @@ import dao.DaoFactory;
 import dao.DaoFactoryImpl;
 import db.DatabaseConn;
 import java.awt.Component;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,6 +31,7 @@ public class BaksSessionBean {
     private static BaksSessionBean instance;
     private static TO_User user;
     private static DaoFactory baksFactory;
+    private static String dbName;
 
     private BaksSessionBean() {
         init();
@@ -50,6 +55,34 @@ public class BaksSessionBean {
             Logger.getLogger(BaksSessionBean.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(BaksSessionBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        readProperties();
+    }
+
+    public void readProperties() {
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+
+            input = new FileInputStream("src/adm/Baks/Baks.properties");
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            dbName = prop.getProperty("dbName");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -86,5 +119,13 @@ public class BaksSessionBean {
 
     public static boolean isUzytkownik() {
         return BaksSessionBean.user.getPermission().equals(TO_Permission.UZYTKOWNIK);
+    }
+
+    public static String getDbName() {
+        return dbName;
+    }
+
+    public static void setDbName(String dbName) {
+        BaksSessionBean.dbName = dbName;
     }
 }

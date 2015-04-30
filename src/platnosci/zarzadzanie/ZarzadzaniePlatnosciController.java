@@ -138,6 +138,16 @@ public class ZarzadzaniePlatnosciController extends AbstractController {
         getDaoFactory().getDaoInvoice().aktualizujFakture(getConnection(), faktura);
     }
 
+    public void ustawWidocznoscKontrolek() {
+        if (nadrzednyController.getAktualnyTryb() == WyszukPlatnosciController.DODANIE) {
+            widok.getDataZaplatyChooser().setVisible(false);
+            widok.getDataZaplatyLabel().setVisible(false);
+        } else {
+            widok.getDataZaplatyChooser().setVisible(true);
+            widok.getDataZaplatyLabel().setVisible(true);
+        }
+    }
+
     @Override
     public void czytajFormatke() {
         if (nadrzednyController.getAktualnyTryb() == WyszukPlatnosciController.DODANIE) {
@@ -190,12 +200,16 @@ public class ZarzadzaniePlatnosciController extends AbstractController {
         setSelectedRadioByStatus(nadrzednyController.getWybranaFaktura().getStatus());
         widok.getNrFakturyText().setText(nadrzednyController.getWybranaFaktura().getIdentyfikator());
         setSelectedCompanyCombo(nadrzednyController.getWybranaFaktura().getPaymentCompany());
+        if (nadrzednyController.getWybranaFaktura().getDataZaplacenia() != null) {
+            widok.getDataZaplatyChooser().setDate(nadrzednyController.getWybranaFaktura().getDataZaplacenia());
+        }
     }
 
     public void czyscFormatke() {
         widok.getRadioNieZaplacone().setSelected(true);
         widok.getKwotaText().setText(null);
         widok.getTerminPlatnosciDate().setDate(new Date());
+        widok.getDataZaplatyChooser().setDate(new Date());
         widok.getNrFakturyText().setText(null);
     }
 
