@@ -223,7 +223,8 @@ public class DaoDefect {
 
     public void saveDefect(Connection connection, TO_Defect defect) {
         try {
-            String query = "Insert into defects values (?,?,?,?,?,?,?,?,?)";
+            String query = "Insert into defects(data, marka, model, rok_prod, opis, status, imie, nazwisko, tel)"
+                    + " values (?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             int i = 1;
@@ -232,15 +233,10 @@ public class DaoDefect {
             preparedStatement.setString(i++, defect.getModel());
             preparedStatement.setString(i++, defect.getRokProd());
             preparedStatement.setString(i++, defect.getOpis());
-            preparedStatement.setFloat(i++, defect.getKoszt());
-            preparedStatement.setInt(i++, defect.getTermin().getLp());
-            if (defect.getDataOddanie() != null) {
-                preparedStatement.setDate(i++, new java.sql.Date(defect.getDataOddanie().getTime()));
-            } else {
-                preparedStatement.setDate(i++, null);
-            }
             preparedStatement.setInt(i++, defect.getStatus().getId());
-            preparedStatement.setInt(i++, defect.getCustomer().getId());
+            preparedStatement.setString(i++, defect.getCustomer().getName());
+            preparedStatement.setString(i++, defect.getCustomer().getSurname());
+            preparedStatement.setString(i++, defect.getCustomer().getPhone());
             
 
             preparedStatement.executeUpdate();
