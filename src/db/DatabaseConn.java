@@ -28,7 +28,8 @@ public class DatabaseConn {
     public static DatabaseConn getInstance() {
         if (instance == null) {
             try {
-                String dbName = BaksSessionBean.getInstance().getDbName();
+                BaksSessionBean.getInstance();
+                String dbName = BaksSessionBean.getDbName();
                 instance = new DatabaseConn();
                 Class.forName("org.postgresql.Driver");
                 try {

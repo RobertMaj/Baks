@@ -6,12 +6,12 @@
 package platnosci.zarzadzanie;
 
 import com.toedter.calendar.JDateChooser;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -25,6 +25,10 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
      */
     public ZarzadzaniePlatnosciaPanel() {
         initComponents();
+        dataZaplatyChooser.setDateFormatString("yyyy-MM-dd");
+        terminPlatnosciDate.setDateFormatString("yyyy-MM-dd");
+        dataZaplatyChooser.setDate(new Date());
+        terminPlatnosciDate.setDate(new Date());
     }
 
     /**
@@ -118,9 +122,13 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Termin płatności");
 
+        terminPlatnosciDate.setDateFormatString("yyyy-MM-dd");
+
         jLabel4.setText("Nr faktury");
 
         dataZaplatyLabel.setText("Termin zapłaty");
+
+        dataZaplatyChooser.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

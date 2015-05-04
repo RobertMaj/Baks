@@ -174,7 +174,11 @@ public class DaoInvoice {
             preparedStatement.setDouble(i++, faktura.getKoszt());
             preparedStatement.setInt(i++, faktura.getStatus().getId());
             preparedStatement.setInt(i++, faktura.getPaymentCompany().getId());
-            preparedStatement.setDate(i++, new java.sql.Date(faktura.getDataZaplacenia().getTime()));
+            if (faktura.getDataZaplacenia() != null) {
+                preparedStatement.setDate(i++, new java.sql.Date(faktura.getDataZaplacenia().getTime()));
+            } else {
+                preparedStatement.setDate(i++, ((java.sql.Date) null));
+            }
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {

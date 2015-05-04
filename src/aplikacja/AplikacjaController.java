@@ -160,8 +160,6 @@ public class AplikacjaController extends AbstractController {
     private void przegladajNaprawyInit() {
         akcjaRezygnuj();
         NaprawaPrzegladanieController controller = new NaprawaPrzegladanieController(getConnection(), getDaoFactory());
-        NaprawaPrzegladanieController.setMODE(NaprawaPrzegladanieController.MODE_VIEW);
-        controller.ustawEditablePol();
         initWidok(controller.getWidok());
     }
 

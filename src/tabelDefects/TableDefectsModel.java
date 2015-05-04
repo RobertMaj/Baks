@@ -35,19 +35,22 @@ public class TableDefectsModel extends AbstractTableModel {
     public TO_Defect getDefectAt(int rowIndex) {
         return list.get(rowIndex);
     }
-    
+
     @Override
     public String getColumnName(int column) {
         String value = "";
         switch (column) {
             case 0:
-                value = "Marka";
+                value = "Klient";
                 break;
             case 1:
                 value = "Model";
                 break;
             case 2:
                 value = "Termin";
+                break;
+            case 3:
+                value = "Status";
                 break;
         }
         return value;
@@ -67,6 +70,9 @@ public class TableDefectsModel extends AbstractTableModel {
                 break;
             case 2:
                 value = defect.getData().toString() + " " + defect.getTermin().toString();
+                break;
+            case 3:
+                value = defect.getStatus().getOpis();
                 break;
         }
         return value;

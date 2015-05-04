@@ -26,7 +26,6 @@ import java.util.List;
 public class NaprawaZapisController extends AbstractController {
 
     private NaprawaZapisPanel widok;
-    private List<TO_Termin> listaDostTerminow;
     private TO_Defect defect;
 
     public NaprawaZapisController(Connection connection, DaoFactory daoFactory) {

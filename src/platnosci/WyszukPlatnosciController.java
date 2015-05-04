@@ -394,9 +394,7 @@ public class WyszukPlatnosciController extends AbstractController {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             String strdate = "";
             Date calendardate = new Date();
-            if (calendardate != null) {
-                strdate = sdf.format(calendardate.getTime());
-            }
+            strdate = sdf.format(calendardate.getTime());
 
             File wydruk = new File(druk + "/Platnosci - " + strdate + ".pdf");
             if (!wydruk.exists()) {

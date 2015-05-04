@@ -66,7 +66,7 @@ public class BaksSessionBean {
 
         try {
 
-            input = new FileInputStream("src/adm/Baks/Baks.properties");
+            input = new FileInputStream("BinSrc/Baks.properties");
 
             // load a properties file
             prop.load(input);

@@ -5,6 +5,7 @@
  */
 package platnosci.zarzadzanie;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -19,10 +20,19 @@ public class Drukowanie extends javax.swing.JDialog {
 
     /**
      * Creates new form Drukowanie
+     *
+     * @param parent
+     * @param modal
      */
     public Drukowanie(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Date data = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(data);
+        c.add(Calendar.DATE, -14);
+        odDate.setDate(c.getTime());
+        doDate.setDate(new Date());
     }
 
     /**
@@ -44,6 +54,10 @@ public class Drukowanie extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Drukowanie");
         setAlwaysOnTop(true);
+
+        odDate.setDateFormatString("yyyy-MM-dd");
+
+        doDate.setDateFormatString("yyyy-MM-dd");
 
         jLabel1.setText("Od");
 

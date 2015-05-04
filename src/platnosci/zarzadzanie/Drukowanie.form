@@ -73,8 +73,14 @@
   </Layout>
   <SubComponents>
     <Component class="com.toedter.calendar.JDateChooser" name="odDate">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+      </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="doDate">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

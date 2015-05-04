@@ -5,13 +5,9 @@
  */
 package naprawa.przegladanie;
 
-import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
@@ -34,14 +30,6 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         this.btnRezygnuj = btnRezygnuj;
     }
 
-    public JButton getBtnZapisz() {
-        return btnZapisz;
-    }
-
-    public void setBtnZapisz(JButton btnZapisz) {
-        this.btnZapisz = btnZapisz;
-    }
-
     public JPanel getPanelBtn() {
         return panelBtn;
     }
@@ -50,68 +38,12 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         this.panelBtn = panelBtn;
     }
 
-    public JDateChooser getDateChooser() {
-        return dateChooser;
-    }
-
-    public void setDateChooser(JDateChooser dateChooser) {
-        this.dateChooser = dateChooser;
-    }
-
-    public JComboBox getWolnyComboBox() {
-        return wolnyComboBox;
-    }
-
     public JButton getBtnUsun() {
         return btnUsun;
     }
 
     public void setBtnUsun(JButton btnUsun) {
         this.btnUsun = btnUsun;
-    }
-
-    public void setWolnyComboBox(JComboBox wolnyComboBox) {
-        this.wolnyComboBox = wolnyComboBox;
-    }
-
-    public JTextField getMarka() {
-        return marka;
-    }
-
-    public void setMarka(JTextField marka) {
-        this.marka = marka;
-    }
-
-    public JTextField getModel() {
-        return model;
-    }
-
-    public void setModel(JTextField model) {
-        this.model = model;
-    }
-
-    public JTextArea getOpis() {
-        return opis;
-    }
-
-    public void setOpis(JTextArea opis) {
-        this.opis = opis;
-    }
-
-    public JTextField getRokProd() {
-        return rokProd;
-    }
-
-    public void setRokProd(JTextField rokProd) {
-        this.rokProd = rokProd;
-    }
-
-    public JPanel getPanelEdycji() {
-        return panelEdycji;
-    }
-
-    public void setPanelEdycji(JPanel panelEdycji) {
-        this.panelEdycji = panelEdycji;
     }
 
     public JTable getTable() {
@@ -133,25 +65,17 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         panelBtn = new javax.swing.JPanel();
-        btnZapisz = new javax.swing.JButton();
         btnRezygnuj = new javax.swing.JButton();
         btnUsun = new javax.swing.JButton();
-        panelEdycji = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        opis = new javax.swing.JTextArea();
-        jLabel8 = new javax.swing.JLabel();
-        rokProd = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        marka = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        model = new javax.swing.JTextField();
-        wolnyComboBox = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        dateChooser = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
+        btnWybierz = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        imie = new javax.swing.JTextField();
+        nazwisko = new javax.swing.JTextField();
+        nrTel = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 204, 255));
         setBorder(javax.swing.BorderFactory.createTitledBorder("Przeglądanie napraw"));
@@ -160,112 +84,34 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
 
         panelBtn.setBackground(new java.awt.Color(102, 102, 102));
 
-        btnZapisz.setText("Edytuj");
-
         btnRezygnuj.setText("Rezygnuj");
 
         btnUsun.setText("Usuń");
+
+        btnWybierz.setText("Wybierz");
 
         javax.swing.GroupLayout panelBtnLayout = new javax.swing.GroupLayout(panelBtn);
         panelBtn.setLayout(panelBtnLayout);
         panelBtnLayout.setHorizontalGroup(
             panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBtnLayout.createSequentialGroup()
-                .addGap(421, 421, 421)
-                .addComponent(btnZapisz)
+                .addGap(419, 419, 419)
+                .addComponent(btnWybierz)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsun)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRezygnuj)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         panelBtnLayout.setVerticalGroup(
             panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBtnLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnZapisz)
                     .addComponent(btnRezygnuj)
-                    .addComponent(btnUsun))
+                    .addComponent(btnUsun)
+                    .addComponent(btnWybierz))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelEdycji.setToolTipText("");
-
-        opis.setColumns(20);
-        opis.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        opis.setRows(5);
-        jScrollPane1.setViewportView(opis);
-
-        jLabel8.setText("Opis");
-
-        jLabel5.setText("Rok produkcji");
-
-        jLabel3.setText("Marka");
-
-        jLabel4.setText("Model");
-
-        wolnyComboBox.setToolTipText("");
-
-        jLabel7.setText("Wybierz wolny termin:");
-
-        dateChooser.setDateFormatString(" yyyy-MM-dd");
-
-        jLabel6.setText("Data");
-
-        javax.swing.GroupLayout panelEdycjiLayout = new javax.swing.GroupLayout(panelEdycji);
-        panelEdycji.setLayout(panelEdycjiLayout);
-        panelEdycjiLayout.setHorizontalGroup(
-            panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEdycjiLayout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addGap(26, 26, 26)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(wolnyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelEdycjiLayout.createSequentialGroup()
-                        .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(marka, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(rokProd, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(model, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelEdycjiLayout.setVerticalGroup(
-            panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEdycjiLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(wolnyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(marka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rokProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelEdycjiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addContainerGap())
         );
 
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -298,30 +144,63 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
             table.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        jLabel2.setText("Imię");
+
+        jLabel3.setText("Nazwisko");
+
+        jLabel4.setText("Nr tel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(34, 34, 34)
+                                .addComponent(imie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nazwisko)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(nrTel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(panelEdycji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelEdycji, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(nrTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -331,24 +210,16 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRezygnuj;
     private javax.swing.JButton btnUsun;
-    private javax.swing.JButton btnZapisz;
-    private com.toedter.calendar.JDateChooser dateChooser;
+    private javax.swing.JButton btnWybierz;
+    private javax.swing.JTextField imie;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField marka;
-    private javax.swing.JTextField model;
-    private javax.swing.JTextArea opis;
+    private javax.swing.JTextField nazwisko;
+    private javax.swing.JTextField nrTel;
     private javax.swing.JPanel panelBtn;
-    private javax.swing.JPanel panelEdycji;
-    private javax.swing.JTextField rokProd;
     private javax.swing.JTable table;
-    private javax.swing.JComboBox wolnyComboBox;
     // End of variables declaration//GEN-END:variables
 }
