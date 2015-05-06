@@ -21,7 +21,6 @@ public class TO_Defect implements Serializable {
     private String rokProd;
     private String opis;
     private float koszt;
-    private TO_Termin termin;
     private Date dataOddanie;
     private TO_Customer customer;
     private TO_StatusDefects status;
@@ -96,14 +95,6 @@ public class TO_Defect implements Serializable {
 
     public void setKoszt(Float koszt) {
         this.koszt = koszt;
-    }
-
-    public TO_Termin getTermin() {
-        return termin;
-    }
-
-    public void setTermin(TO_Termin termin) {
-        this.termin = termin;
     }
 
     public void setKoszt(float koszt) {

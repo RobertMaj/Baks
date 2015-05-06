@@ -47,12 +47,9 @@ public class TableDefectsHistoryModel extends AbstractTableModel {
                 value = "Model";
                 break;
             case 2:
-                value = "Termin";
-                break;
-            case 3:
                 value = "Data oddania";
                 break;
-            case 4:
+            case 3:
                 value = "Koszt";
                 break;
         }
@@ -72,12 +69,9 @@ public class TableDefectsHistoryModel extends AbstractTableModel {
                 value = defect.getModel();
                 break;
             case 2:
-                value = defect.getData().toString() + " " + defect.getTermin().toString();
-                break;
-            case 3:
                 value = defect.getDataOddanie();
                 break;
-            case 4:
+            case 3:
                 value = defect.getKoszt() + " PLN";
                 break;
         }

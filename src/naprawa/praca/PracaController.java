@@ -8,6 +8,9 @@ package naprawa.praca;
 import Model.praca.Czesc;
 import Model.praca.Material;
 import Model.praca.Naprawa;
+import adm.Baks.AbstractController;
+import dao.DaoFactory;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import swing.UITogglePanel;
@@ -16,7 +19,7 @@ import swing.UITogglePanel;
  *
  * @author jmaj
  */
-public class PracaController {
+public class PracaController extends AbstractController {
 
     private PracaPanel widok;
 
@@ -32,16 +35,10 @@ public class PracaController {
     private List<Material> listaMaterialow = new ArrayList<>();
     private List<Naprawa> listaNapraw = new ArrayList<>();
 
-    public PracaController() {
-        init();
-        for (UITogglePanel item : widok.getListaTglPanel()) {
-            item.addTogglePanelOpenCloseListener(listener);
-        }
+    public PracaController(Connection connection, DaoFactory daoFactory) {
+        super(connection, daoFactory);
     }
 
-    private void init() {
-        widok = new PracaPanel();
-    }
 
     public void akcjaOtworzPrace() {
         ustawRozwiniecieZakladek();
@@ -53,6 +50,9 @@ public class PracaController {
 
     public void setWidok(PracaPanel widok) {
         this.widok = widok;
+        for (UITogglePanel item : widok.getListaTglPanel()) {
+            item.addTogglePanelOpenCloseListener(listener);
+        }
     }
 
     public void ustawRozwiniecieZakladek() {
@@ -84,6 +84,14 @@ public class PracaController {
 
     public void setListaNapraw(List<Naprawa> listaNapraw) {
         this.listaNapraw = listaNapraw;
+    }
+
+    @Override
+    public void czytajFormatke() {
+    }
+
+    @Override
+    public void wypelnijFormatke() {
     }
 
 }

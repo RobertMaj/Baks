@@ -6,18 +6,16 @@
 package naprawa.przegladanie;
 
 import Model.TO_Defect;
-import Model.TO_Termin;
 import adm.Baks.AbstractController;
-import adm.Baks.BaksSessionBean;
 import dao.DaoFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.util.List;
+import naprawa.praca.PracaController;
+import naprawa.praca.PracaPanel;
 import tabelDefects.TableDefectsModel;
 
 /**
@@ -32,7 +30,8 @@ public class NaprawaPrzegladanieController extends AbstractController {
 
     private TO_Defect wybranyDefect;
 
-    private List<TO_Termin> listaDostTerminow;
+    public static final int ZAKL_1 = 0;
+    public static final int ZAKL_2 = 1;
 
     public static final int MODE_EDIT = 1;
     public static final int MODE_VIEW = 2;
@@ -47,7 +46,7 @@ public class NaprawaPrzegladanieController extends AbstractController {
     private void init() {
         setWidok(new NaprawaPrzegladaniePanel());
         wybranyDefect = new TO_Defect();
-        setLista(getDaoFactory().getDaoDefect().getDefectListByUser(getConnection(), BaksSessionBean.getUser()));
+        setLista(getDaoFactory().getDaoDefect().getDefectList(getConnection()));
 
         widok.getBtnRezygnuj().addActionListener(new ActionListener() {
 
@@ -69,8 +68,9 @@ public class NaprawaPrzegladanieController extends AbstractController {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                wybranyDefect = ((TableDefectsModel) widok.getTable().getModel()).getDefectAt(widok.getTable().getSelectedRow());
-                wypelnijFormatke();
+                if (e.getClickCount() == 2) {
+                    akcjaWybierz();
+                }
             }
 
             @Override
@@ -90,8 +90,29 @@ public class NaprawaPrzegladanieController extends AbstractController {
             }
         });
 
+        widok.getBtnWybierz().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                akcjaWybierz();
+            }
+        });
+
         modelTable = new TableDefectsModel(lista);
         fillTable();
+    }
+
+    public void przejdzDoZakladki(int indx) {
+        widok.getTabbedPane().setSelectedIndex(indx);
+    }
+
+    public void akcjaWybierz() {
+        wybranyDefect = ((TableDefectsModel) widok.getTable().getModel()).getDefectAt(widok.getTable().getSelectedRow());
+        wypelnijFormatke();
+        PracaController pracaController = new PracaController(getConnection(), getDaoFactory());
+        pracaController.setWidok(getPracaPanel());
+        pracaController.akcjaOtworzPrace();
+        przejdzDoZakladki(ZAKL_2);
     }
 
     /**
@@ -114,7 +135,7 @@ public class NaprawaPrzegladanieController extends AbstractController {
     }
 
     public void odswiezFormatke() {
-        lista = getDaoFactory().getDaoDefect().getDefectListByUser(getConnection(), BaksSessionBean.getUser());
+        lista = getDaoFactory().getDaoDefect().getDefectList(getConnection());
         modelTable = new TableDefectsModel(lista);
         fillTable();
     }
@@ -134,15 +155,17 @@ public class NaprawaPrzegladanieController extends AbstractController {
 
     @Override
     public void czytajFormatke() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void wypelnijFormatke() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setLista(List<TO_Defect> lista) {
         this.lista = lista;
+    }
+
+    public PracaPanel getPracaPanel() {
+        return getWidok().getPracaPanel();
     }
 }

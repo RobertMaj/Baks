@@ -5,6 +5,7 @@
  */
 package platnosci.zarzadzanie;
 
+import adm.Baks.BaksSessionBean;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -43,32 +44,27 @@ public class Drukowanie extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel1 = new javax.swing.JPanel();
+        rezygnuj = new javax.swing.JButton();
+        drukuj = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         odDate = new com.toedter.calendar.JDateChooser();
-        doDate = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        drukuj = new javax.swing.JButton();
-        rezygnuj = new javax.swing.JButton();
+        doDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Drukowanie");
         setAlwaysOnTop(true);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        odDate.setDateFormatString("yyyy-MM-dd");
-
-        doDate.setDateFormatString("yyyy-MM-dd");
-
-        jLabel1.setText("Od");
-
-        jLabel2.setText("Do");
-
-        drukuj.setText("Drukuj");
-        drukuj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drukujActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(BaksSessionBean
+            .BUTTON_PANEL_COLOR);
+        jPanel1.setMinimumSize(new java.awt.Dimension(270, 40));
+        jPanel1.setPreferredSize(new java.awt.Dimension(270, 40));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         rezygnuj.setText("Rezygnuj");
         rezygnuj.addActionListener(new java.awt.event.ActionListener() {
@@ -76,45 +72,81 @@ public class Drukowanie extends javax.swing.JDialog {
                 rezygnujActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel1.add(rezygnuj, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(116, 124, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(odDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(doDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(drukuj)
-                        .addGap(18, 18, 18)
-                        .addComponent(rezygnuj)))
-                .addGap(114, 114, 114))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(odDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(doDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(drukuj)
-                    .addComponent(rezygnuj))
-                .addContainerGap())
-        );
+        drukuj.setText("Drukuj");
+        drukuj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drukujActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel1.add(drukuj, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        getContentPane().add(jPanel1, gridBagConstraints);
+
+        jPanel2.setBackground(BaksSessionBean
+            .PANEL_BACKGROUND_PANEL_COLOR);
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        odDate.setDateFormatString("yyyy-MM-dd");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel2.add(odDate, gridBagConstraints);
+
+        jLabel1.setText("Od");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel2.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setText("Do");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel2.add(jLabel2, gridBagConstraints);
+
+        doDate.setDateFormatString("yyyy-MM-dd");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        jPanel2.add(doDate, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,6 +193,8 @@ public class Drukowanie extends javax.swing.JDialog {
     private javax.swing.JButton drukuj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser odDate;
     private javax.swing.JButton rezygnuj;
     // End of variables declaration//GEN-END:variables

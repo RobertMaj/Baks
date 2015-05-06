@@ -16,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author Robert M
  */
-public class PracaPanel extends javax.swing.JPanel {
+public class PracaOLDPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NaprawaZapisPanel
      */
-    public PracaPanel() {
+    public PracaOLDPanel() {
         initComponents();
     }
 

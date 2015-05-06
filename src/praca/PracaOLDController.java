@@ -22,10 +22,10 @@ import tabelDefects.TableDefectsHistoryModel;
  *
  * @author Robert M
  */
-public class PracaController extends AbstractController {
+public class PracaOLDController extends AbstractController {
 
     private TableDefectsHistoryModel modelTable;
-    private PracaPanel widok;
+    private PracaOLDPanel widok;
     private List<TO_Defect> lista;
 
     private Date wybranaData = new Date();
@@ -33,13 +33,13 @@ public class PracaController extends AbstractController {
 
     private TO_Defect wybranyDefect;
 
-    public PracaController(Connection connection, DaoFactory daoFactory) {
+    public PracaOLDController(Connection connection, DaoFactory daoFactory) {
         super(connection, daoFactory);
         init();
     }
 
     private void init() {
-        setWidok(new PracaPanel());
+        setWidok(new PracaOLDPanel());
         getListaWybranych();
         widok.getBtnRezygnuj().addActionListener(new ActionListener() {
 
@@ -130,11 +130,11 @@ public class PracaController extends AbstractController {
     }
 
 //<editor-fold defaultstate="collapsed" desc="Akcesory">
-    public PracaPanel getWidok() {
+    public PracaOLDPanel getWidok() {
         return widok;
     }
 
-    public void setWidok(PracaPanel widok) {
+    public void setWidok(PracaOLDPanel widok) {
         this.widok = widok;
     }
 

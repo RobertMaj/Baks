@@ -5,6 +5,7 @@
  */
 package platnosci;
 
+import adm.Baks.BaksSessionBean;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,6 +34,7 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         sortowanie = new javax.swing.ButtonGroup();
@@ -67,56 +69,79 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
         radioKwotaSortowanie = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(BaksSessionBean
+            .MAIN_BACKGROUND_PANEL_COLOR);
         setBorder(javax.swing.BorderFactory.createTitledBorder("Płatności"));
-        setMinimumSize(new java.awt.Dimension(1000, 600));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(800, 400));
+        setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(jLabel1, gridBagConstraints);
 
-        panelBtn.setBackground(new java.awt.Color(102, 102, 102));
+        panelBtn.setBackground(BaksSessionBean
+            .BUTTON_PANEL_COLOR);
+        panelBtn.setMinimumSize(new java.awt.Dimension(988, 40));
+        panelBtn.setLayout(new java.awt.GridBagLayout());
 
         btnRezygnuj.setText("Rezygnuj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 11, 342);
+        panelBtn.add(btnRezygnuj, gridBagConstraints);
 
         btnDodaj.setText("Dodaj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 11, 0);
+        panelBtn.add(btnDodaj, gridBagConstraints);
 
         btnWybierz.setText("Wybierz");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 230, 11, 0);
+        panelBtn.add(btnWybierz, gridBagConstraints);
 
         btnUsun.setText("Usuń");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 11, 0);
+        panelBtn.add(btnUsun, gridBagConstraints);
 
         btnDrukuj.setText("Drukuj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 57, 11, 0);
+        panelBtn.add(btnDrukuj, gridBagConstraints);
 
-        javax.swing.GroupLayout panelBtnLayout = new javax.swing.GroupLayout(panelBtn);
-        panelBtn.setLayout(panelBtnLayout);
-        panelBtnLayout.setHorizontalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btnDrukuj)
-                .addGap(230, 230, 230)
-                .addComponent(btnWybierz)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDodaj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnUsun)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRezygnuj)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelBtnLayout.setVerticalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRezygnuj)
-                    .addComponent(btnDodaj)
-                    .addComponent(btnWybierz)
-                    .addComponent(btnUsun)
-                    .addComponent(btnDrukuj))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        add(panelBtn, gridBagConstraints);
 
+        jPanel1.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
+
+        radioZaplacone.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioZaplacone);
         radioZaplacone.setText("Zapłacone");
 
+        radioNieZaplacone.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioNieZaplacone);
         radioNieZaplacone.setText("Nie zapłacone");
 
@@ -154,6 +179,7 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
             table.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        radioAnulowane.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioAnulowane);
         radioAnulowane.setText("Anulowane");
 
@@ -165,21 +191,27 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
 
         zlLabel.setText("zł");
 
+        radioMalejacoTermin.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         terminSortowanie.add(radioMalejacoTermin);
         radioMalejacoTermin.setText("malejąco");
 
+        radioRosnacoTermin.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         terminSortowanie.add(radioRosnacoTermin);
         radioRosnacoTermin.setText("rosnąco");
 
+        radioKwotaMalejaco.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         kwotaSortowanie.add(radioKwotaMalejaco);
         radioKwotaMalejaco.setText("malejąco");
 
+        radioKwotaRosnaco.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         kwotaSortowanie.add(radioKwotaRosnaco);
         radioKwotaRosnaco.setText("rosnąco");
 
+        radioTerminSortowanie.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         sortowanie.add(radioTerminSortowanie);
         radioTerminSortowanie.setText("Termin płatności");
 
+        radioKwotaSortowanie.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         sortowanie.add(radioKwotaSortowanie);
         radioKwotaSortowanie.setText("Kwota");
 
@@ -192,7 +224,7 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
             .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -271,31 +303,15 @@ public class PrzegladaniePlatnosciPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(16, 6, 0, 0);
+        add(jPanel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnDodaj() {

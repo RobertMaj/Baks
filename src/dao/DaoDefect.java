@@ -5,7 +5,9 @@
  */
 package dao;
 
+import Model.TO_Customer;
 import Model.TO_Defect;
+import Model.TO_StatusDefects;
 import Model.TO_Termin;
 import Model.TO_User;
 import java.sql.Connection;
@@ -24,14 +26,13 @@ import java.util.logging.Logger;
  */
 public class DaoDefect {
 
-    public List<TO_Defect> getDefectListByUser(Connection connection, TO_User user) {
+    public List<TO_Defect> getDefectList(Connection connection) {
         List<TO_Defect> list = new ArrayList<>();
         try {
 
-            String sql = "Select * from defects where mail = ? and data_oddania is null ";
+            String sql = "Select * from defects ";
 
             PreparedStatement prepStmt = connection.prepareStatement(sql);
-            prepStmt.setString(1, user.getMail());
 
             ResultSet rs = prepStmt.executeQuery();
 
@@ -43,10 +44,14 @@ public class DaoDefect {
                 defect.setModel(rs.getString("model"));
                 defect.setRokProd(rs.getString("rok_prod"));
                 defect.setKoszt(rs.getFloat("koszt"));
+                defect.setStatus(TO_StatusDefects.getStatusDefectsById(rs.getInt("status")));
                 defect.setOpis(rs.getString("opis"));
-                defect.setTermin(TO_Termin.getTerminByLp(rs.getInt("termin_nr")));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
-                defect.setCustomer(null);
+                TO_Customer customer = new TO_Customer();
+                customer.setName(rs.getString("imie"));
+                customer.setSurname(rs.getString("nazwisko"));
+                customer.setPhone(rs.getString("tel"));
+                defect.setCustomer(customer);
 
                 list.add(defect);
             }
@@ -76,7 +81,6 @@ public class DaoDefect {
                 defect.setRokProd(rs.getString("rok_prod"));
                 defect.setKoszt(rs.getFloat("koszt"));
                 defect.setOpis(rs.getString("opis"));
-                defect.setTermin(TO_Termin.getTerminByLp(rs.getInt("termin_nr")));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
                 defect.setCustomer(null);
 
@@ -108,7 +112,6 @@ public class DaoDefect {
                 defect.setRokProd(rs.getString("rok_prod"));
                 defect.setKoszt(rs.getFloat("koszt"));
                 defect.setOpis(rs.getString("opis"));
-                defect.setTermin(TO_Termin.getTerminByLp(rs.getInt("termin_nr")));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
 
                 list.add(defect);
@@ -139,7 +142,6 @@ public class DaoDefect {
                 defect.setRokProd(rs.getString("rok_prod"));
                 defect.setKoszt(rs.getFloat("koszt"));
                 defect.setOpis(rs.getString("opis"));
-                defect.setTermin(TO_Termin.getTerminByLp(rs.getInt("termin_nr")));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
 
                 list.add(defect);
@@ -159,7 +161,6 @@ public class DaoDefect {
             preparedStatement.setString(i++, defect.getMarka());
             preparedStatement.setString(i++, defect.getModel());
             preparedStatement.setString(i++, defect.getRokProd());
-            preparedStatement.setInt(i++, defect.getTermin().getLp());
             preparedStatement.setString(i++, defect.getOpis());
             preparedStatement.setFloat(i++, defect.getKoszt());
             preparedStatement.setDate(i++, new java.sql.Date(defect.getData().getTime()));

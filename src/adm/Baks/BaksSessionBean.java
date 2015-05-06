@@ -7,9 +7,11 @@ package adm.Baks;
 
 import Model.TO_Permission;
 import Model.TO_User;
+import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import dao.DaoFactory;
 import dao.DaoFactoryImpl;
 import db.DatabaseConn;
+import java.awt.Color;
 import java.awt.Component;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,6 +34,16 @@ public class BaksSessionBean {
     private static TO_User user;
     private static DaoFactory baksFactory;
     private static String dbName;
+    
+    public static Color BUTTON_PANEL_COLOR;
+    public static Color MAIN_BACKGROUND_PANEL_COLOR;
+    public static Color PANEL_BACKGROUND_PANEL_COLOR;
+    public static Color BORDER_COLOR;
+    public static Color BROWN_CIEM_COLOR;
+    public static Color BROWN_COLOR;
+    public static Color GREEN_CIEM_COLOR;
+    public static Color GREEN_COLOR;
+    
 
     private static boolean isIDE = false;
 
@@ -75,6 +87,11 @@ public class BaksSessionBean {
 
             // get the property value and print it out
             dbName = prop.getProperty("dbName");
+            BUTTON_PANEL_COLOR = Color.decode(prop.getProperty("panelBtnColor"));
+            MAIN_BACKGROUND_PANEL_COLOR = Color.decode(prop.getProperty("mainBackgroundColor"));
+            PANEL_BACKGROUND_PANEL_COLOR = Color.decode(prop.getProperty("panelBackgroundColor"));
+            BORDER_COLOR = Color.decode(prop.getProperty("tabPaneBorderColor"));
+            BROWN_CIEM_COLOR = Color.decode(prop.getProperty("brownCiemny"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {

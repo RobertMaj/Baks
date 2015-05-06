@@ -10,6 +10,10 @@ import adm.Baks.BaksSessionBean;
 import dao.DaoFactory;
 import dodajUzytkownika.DodajUzytkownikaController;
 import historia.HistoriaController;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -18,12 +22,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
 import logowanie.LogowanieController;
 import naprawa.przegladanie.NaprawaPrzegladanieController;
 import naprawa.zapisanie.NaprawaZapisController;
 import platnosci.WyszukPlatnosciController;
-import praca.PracaController;
 import zarzadzanieUzytkownikiem.EdycjaUzytkownikaController;
 import zarzadzanieUzytkownikiem.ZarzadzanieUzytkownikiemController;
 import zmianaHasla.ZmianaHaslaController;
@@ -42,10 +44,18 @@ public class AplikacjaController extends AbstractController {
     }
 
     private void init() {
+        GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Dimension screenSize = env.getMaximumWindowBounds().getSize();
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
         widok = new Okno();
-        widok.setAlwaysOnTop(true);
+        widok.setPreferredSize(screenSize);
+        widok.setSize(screenSize);
+        widok.setAlwaysOnTop(false);
         widok.setLocationRelativeTo(null);
-        widok.setResizable(false);
+        widok.setResizable(true);
+        widok.getjPanelMain().setLayout(new GridBagLayout());
 
         if (!BaksSessionBean.isAdministrator()) {
             widok.getUzytkownicyAdm().setVisible(false);
@@ -188,15 +198,21 @@ public class AplikacjaController extends AbstractController {
     }
 
     private void initWidok(JPanel panel) {
-        panel.setSize(1050, 645);
-        widok.getjPanelMain().add(panel);
+        GridBagConstraints gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        widok.getjPanelMain().add(panel, gridBagConstraints);
         widok.getjPanelMain().revalidate();
         panel.revalidate();
     }
 
     private void initWidok(JTabbedPane panel) {
-        panel.setSize(1050, 645);
-        widok.getjPanelMain().add(panel);
+        GridBagConstraints gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        widok.getjPanelMain().add(panel, gridBagConstraints);
         widok.getjPanelMain().revalidate();
         panel.revalidate();
     }
@@ -214,8 +230,12 @@ public class AplikacjaController extends AbstractController {
     }
 
     private void initPraca() {
+//        akcjaRezygnuj();
+//        PracaOLDController controller = new PracaOLDController(getConnection(), getDaoFactory());
+//        initWidok(controller.getWidok());
+
         akcjaRezygnuj();
-        PracaController controller = new PracaController(getConnection(), getDaoFactory());
+        NaprawaPrzegladanieController controller = new NaprawaPrzegladanieController(getConnection(), getDaoFactory());
         initWidok(controller.getWidok());
     }
 

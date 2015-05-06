@@ -5,6 +5,7 @@
  */
 package platnosci.zarzadzanie;
 
+import adm.Baks.BaksSessionBean;
 import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.JButton;
@@ -39,6 +40,7 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
@@ -64,51 +66,70 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
         dataZaplatyLabel = new javax.swing.JLabel();
         dataZaplatyChooser = new com.toedter.calendar.JDateChooser();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(BaksSessionBean
+            .MAIN_BACKGROUND_PANEL_COLOR);
         setBorder(javax.swing.BorderFactory.createTitledBorder("Płatności"));
-        setMinimumSize(new java.awt.Dimension(1000, 600));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setMinimumSize(new java.awt.Dimension(80, 40));
+        setPreferredSize(new java.awt.Dimension(80, 40));
+        setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(jLabel1, gridBagConstraints);
 
-        panelBtn.setBackground(new java.awt.Color(102, 102, 102));
+        panelBtn.setBackground(BaksSessionBean
+            .BUTTON_PANEL_COLOR);
+        panelBtn.setMinimumSize(new java.awt.Dimension(988, 87));
+        panelBtn.setPreferredSize(new java.awt.Dimension(988, 40));
+        panelBtn.setLayout(new java.awt.GridBagLayout());
 
         btnRezygnuj.setText("Rezygnuj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelBtn.add(btnRezygnuj, gridBagConstraints);
 
         btnZapisz.setText("Zapisz");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelBtn.add(btnZapisz, gridBagConstraints);
 
         btnEdytuj.setText("Edytuj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelBtn.add(btnEdytuj, gridBagConstraints);
 
-        javax.swing.GroupLayout panelBtnLayout = new javax.swing.GroupLayout(panelBtn);
-        panelBtn.setLayout(panelBtnLayout);
-        panelBtnLayout.setHorizontalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addGap(422, 422, 422)
-                .addComponent(btnEdytuj)
-                .addGap(18, 18, 18)
-                .addComponent(btnZapisz)
-                .addGap(18, 18, 18)
-                .addComponent(btnRezygnuj)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelBtnLayout.setVerticalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRezygnuj)
-                    .addComponent(btnZapisz)
-                    .addComponent(btnEdytuj))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        add(panelBtn, gridBagConstraints);
 
+        jPanel1.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
+
+        radioZaplacone.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioZaplacone);
         radioZaplacone.setText("Zapłacone");
 
+        radioNieZaplacone.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioNieZaplacone);
         radioNieZaplacone.setText("Nie zapłacone");
 
         jLabel3.setText("Status");
 
+        radioAnulowane.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         buttonGroup1.add(radioAnulowane);
         radioAnulowane.setText("Anulowane");
 
@@ -166,7 +187,7 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDodajFirme))
                             .addComponent(dataZaplatyChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,31 +224,15 @@ public class ZarzadzaniePlatnosciaPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(jPanel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnDodajFirme() {

@@ -5,6 +5,13 @@
  */
 package naprawa.praca;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mzuralski
@@ -18,7 +25,6 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +36,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         btnGroupCenaProcent = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        panelWybor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         opis = new javax.swing.JTextField();
         labelCenaKoszt = new javax.swing.JLabel();
@@ -56,29 +62,29 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(919, 300));
         setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Koszty naprawy"));
-        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        panelWybor.setBorder(javax.swing.BorderFactory.createTitledBorder("Koszty naprawy"));
+        panelWybor.setMinimumSize(new java.awt.Dimension(100, 100));
+        panelWybor.setPreferredSize(new java.awt.Dimension(100, 100));
+        panelWybor.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Opis");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        panelWybor.add(jLabel1, gridBagConstraints);
 
         opis.setPreferredSize(new java.awt.Dimension(300, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(opis, gridBagConstraints);
+        panelWybor.add(opis, gridBagConstraints);
 
         labelCenaKoszt.setText("Koszt/Cena");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(labelCenaKoszt, gridBagConstraints);
+        panelWybor.add(labelCenaKoszt, gridBagConstraints);
 
         kosztCenaPodst.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -87,7 +93,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(kosztCenaPodst, gridBagConstraints);
+        panelWybor.add(kosztCenaPodst, gridBagConstraints);
 
         btnGroupCenaProcent.add(btnProcent);
         btnProcent.setText("Procent");
@@ -95,7 +101,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(btnProcent, gridBagConstraints);
+        panelWybor.add(btnProcent, gridBagConstraints);
 
         btnGroupCenaProcent.add(btnKwota);
         btnKwota.setText("Kwota");
@@ -104,7 +110,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(btnKwota, gridBagConstraints);
+        panelWybor.add(btnKwota, gridBagConstraints);
 
         jLabel3.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -112,21 +118,21 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(jLabel3, gridBagConstraints);
+        panelWybor.add(jLabel3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(dodajDoCeny, gridBagConstraints);
+        panelWybor.add(dodajDoCeny, gridBagConstraints);
 
         jLabel4.setText("+");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(jLabel4, gridBagConstraints);
+        panelWybor.add(jLabel4, gridBagConstraints);
 
         labelProcentZl.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -134,21 +140,21 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(labelProcentZl, gridBagConstraints);
+        panelWybor.add(labelProcentZl, gridBagConstraints);
 
         jLabel6.setText("=");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(jLabel6, gridBagConstraints);
+        panelWybor.add(jLabel6, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(suma, gridBagConstraints);
+        panelWybor.add(suma, gridBagConstraints);
 
         jLabel7.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -156,7 +162,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(jLabel7, gridBagConstraints);
+        panelWybor.add(jLabel7, gridBagConstraints);
 
         btnGroupCenaProcent.add(radioBrak);
         radioBrak.setSelected(true);
@@ -165,7 +171,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel1.add(radioBrak, gridBagConstraints);
+        panelWybor.add(radioBrak, gridBagConstraints);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -189,7 +195,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.gridheight = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jPanel3, gridBagConstraints);
+        panelWybor.add(jPanel3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -198,7 +204,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        add(jPanel1, gridBagConstraints);
+        add(panelWybor, gridBagConstraints);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
@@ -231,6 +237,110 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         add(jPanel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBtnDodaj() {
+        return btnDodaj;
+    }
+
+    public void setBtnDodaj(JButton btnDodaj) {
+        this.btnDodaj = btnDodaj;
+    }
+
+    public ButtonGroup getBtnGroupCenaProcent() {
+        return btnGroupCenaProcent;
+    }
+
+    public void setBtnGroupCenaProcent(ButtonGroup btnGroupCenaProcent) {
+        this.btnGroupCenaProcent = btnGroupCenaProcent;
+    }
+
+    public JRadioButton getBtnKwota() {
+        return btnKwota;
+    }
+
+    public void setBtnKwota(JRadioButton btnKwota) {
+        this.btnKwota = btnKwota;
+    }
+
+    public JRadioButton getBtnProcent() {
+        return btnProcent;
+    }
+
+    public void setBtnProcent(JRadioButton btnProcent) {
+        this.btnProcent = btnProcent;
+    }
+
+    public JButton getBtnUsun() {
+        return btnUsun;
+    }
+
+    public void setBtnUsun(JButton btnUsun) {
+        this.btnUsun = btnUsun;
+    }
+
+    public JTextField getDodajDoCeny() {
+        return dodajDoCeny;
+    }
+
+    public void setDodajDoCeny(JTextField dodajDoCeny) {
+        this.dodajDoCeny = dodajDoCeny;
+    }
+
+    public JTextField getKosztCenaPodst() {
+        return kosztCenaPodst;
+    }
+
+    public void setKosztCenaPodst(JTextField kosztCenaPodst) {
+        this.kosztCenaPodst = kosztCenaPodst;
+    }
+
+    public JLabel getLabelCenaKoszt() {
+        return labelCenaKoszt;
+    }
+
+    public void setLabelCenaKoszt(JLabel labelCenaKoszt) {
+        this.labelCenaKoszt = labelCenaKoszt;
+    }
+
+    public JLabel getLabelProcentZl() {
+        return labelProcentZl;
+    }
+
+    public void setLabelProcentZl(JLabel labelProcentZl) {
+        this.labelProcentZl = labelProcentZl;
+    }
+
+    public JTextField getOpis() {
+        return opis;
+    }
+
+    public void setOpis(JTextField opis) {
+        this.opis = opis;
+    }
+
+    public JPanel getPanelWybor() {
+        return panelWybor;
+    }
+
+    public void setPanelWybor(JPanel panelWybor) {
+        this.panelWybor = panelWybor;
+    }
+
+    public JRadioButton getRadioBrak() {
+        return radioBrak;
+    }
+
+    public void setRadioBrak(JRadioButton radioBrak) {
+        this.radioBrak = radioBrak;
+    }
+
+    public JTextField getSuma() {
+        return suma;
+    }
+
+    public void setSuma(JTextField suma) {
+        this.suma = suma;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -244,7 +354,6 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -253,6 +362,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelCenaKoszt;
     private javax.swing.JLabel labelProcentZl;
     private javax.swing.JTextField opis;
+    private javax.swing.JPanel panelWybor;
     private javax.swing.JRadioButton radioBrak;
     private javax.swing.JTextField suma;
     // End of variables declaration//GEN-END:variables

@@ -165,8 +165,8 @@ public class UITogglePanel<T extends JPanel> extends javax.swing.JPanel {
     public boolean isOpen() {
         return internalPanel.isVisible();
     }
-    
-    public JPanel getInternalPanel(){
+
+    public JPanel getInternalPanel() {
         return internalPanel;
     }
 
@@ -213,15 +213,24 @@ public class UITogglePanel<T extends JPanel> extends javax.swing.JPanel {
         public boolean isIsOpen() {
             return isOpen;
         }
-        
+
         public UITogglePanel getTogglePanel() {
             return (UITogglePanel) getSource();
         }
     }
-    
+
     @Override
     public void setEnabled(boolean bln) {
         super.setEnabled(bln);
         getPokazUkryjToggleBtn().setEnabled(bln);
     }
+
+    public JPanel getNaglowekPanel() {
+        return naglowekPanel;
+    }
+
+    public void setNaglowekPanel(JPanel naglowekPanel) {
+        this.naglowekPanel = naglowekPanel;
+    }
+
 }

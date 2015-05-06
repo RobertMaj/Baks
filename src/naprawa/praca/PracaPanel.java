@@ -5,6 +5,8 @@
  */
 package naprawa.praca;
 
+import adm.Baks.BaksSessionBean;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
@@ -31,10 +33,27 @@ public class PracaPanel extends javax.swing.JPanel {
     public PracaPanel() {
         initComponents();
         tglInfoNaprawa.initInternalPanel(infoPanel);
+        tglInfoNaprawa.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
+        tglInfoNaprawa.getMainPanel().setBackground(Color.decode("#B8A48E"));
+        
         tglCzesci.initInternalPanel(czesciPanel);
+        tglCzesci.getNaglowekPanel().setBackground(Color.decode("#CDE2BD"));
+        tglCzesci.getMainPanel().setBackground(Color.decode("#B8CBAA"));
+        czesciPanel.getPanelWybor().setBackground(Color.decode("#B8CBAA"));
+        
         tglKosztNaprawy.initInternalPanel(naprawaPanel);
+        tglKosztNaprawy.getNaglowekPanel().setBackground(Color.decode("#CDE2BD"));
+        tglKosztNaprawy.getMainPanel().setBackground(Color.decode("#B8CBAA"));
+        naprawaPanel.getPanelWybor().setBackground(Color.decode("#B8CBAA"));
+        
         tglPodsumowanie.initInternalPanel(podsumowaniePanel);
+        tglPodsumowanie.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
+        tglPodsumowanie.getMainPanel().setBackground(Color.decode("#B8A48E"));
+        
         tglMaterialy.initInternalPanel(materialyPanel);
+        tglMaterialy.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
+        tglMaterialy.getMainPanel().setBackground(Color.decode("#B8A48E"));
+        materialyPanel.getPanelWybor().setBackground(Color.decode("#B8A48E"));
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 
@@ -61,10 +80,13 @@ public class PracaPanel extends javax.swing.JPanel {
         btnZakonczPrace = new javax.swing.JButton();
         btnDrukuj = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(447, 63));
-        setPreferredSize(new java.awt.Dimension(1002, 153));
+        setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
         setLayout(new java.awt.GridBagLayout());
 
+        jScrollPane1.setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        jPanel1.setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         tglInfoNaprawa.setBackground(new java.awt.Color(132, 191, 180));
@@ -94,6 +116,8 @@ public class PracaPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(tglKosztNaprawy, gridBagConstraints);
+
+        filler2.setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -130,6 +154,7 @@ public class PracaPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jScrollPane1, gridBagConstraints);
 
+        panelPrzyciski.setBackground(BaksSessionBean.BUTTON_PANEL_COLOR);
         panelPrzyciski.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelPrzyciski.setMaximumSize(new java.awt.Dimension(32767, 40));
         panelPrzyciski.setMinimumSize(new java.awt.Dimension(447, 40));

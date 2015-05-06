@@ -47,9 +47,6 @@ public class TableDefectsModel extends AbstractTableModel {
                 value = "Model";
                 break;
             case 2:
-                value = "Termin";
-                break;
-            case 3:
                 value = "Status";
                 break;
         }
@@ -69,9 +66,6 @@ public class TableDefectsModel extends AbstractTableModel {
                 value = defect.getModel();
                 break;
             case 2:
-                value = defect.getData().toString() + " " + defect.getTermin().toString();
-                break;
-            case 3:
                 value = defect.getStatus().getOpis();
                 break;
         }

@@ -5,6 +5,7 @@
  */
 package aplikacja;
 
+import adm.Baks.BaksSessionBean;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,6 +32,7 @@ public class Okno extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         panelMain = new javax.swing.JPanel();
         menuBarMain = new javax.swing.JMenuBar();
@@ -56,20 +58,20 @@ public class Okno extends javax.swing.JFrame {
         setTitle("Baks - warsztat motocyklowy");
         setMinimumSize(new java.awt.Dimension(1024, 700));
         setPreferredSize(new java.awt.Dimension(1024, 700));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        panelMain.setBackground(BaksSessionBean
+            .MAIN_BACKGROUND_PANEL_COLOR);
         panelMain.setMinimumSize(new java.awt.Dimension(1024, 700));
         panelMain.setPreferredSize(new java.awt.Dimension(1024, 700));
-
-        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
-        panelMain.setLayout(panelMainLayout);
-        panelMainLayout.setHorizontalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
-        );
-        panelMainLayout.setVerticalGroup(
-            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
+        panelMain.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(panelMain, gridBagConstraints);
 
         naprawaMenu.setText("Naprawa");
 
@@ -133,17 +135,6 @@ public class Okno extends javax.swing.JFrame {
         menuBarMain.add(wylogujMenu);
 
         setJMenuBar(menuBarMain);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

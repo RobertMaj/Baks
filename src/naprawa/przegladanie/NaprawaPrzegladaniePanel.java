@@ -5,9 +5,12 @@
  */
 package naprawa.przegladanie;
 
+import adm.Baks.BaksSessionBean;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import naprawa.praca.PracaPanel;
 
 /**
  *
@@ -54,6 +57,30 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         this.table = table;
     }
 
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public void setTabbedPane(JTabbedPane tabbedPane) {
+        this.tabbedPane = tabbedPane;
+    }
+
+    public PracaPanel getPracaPanel() {
+        return pracaPanel;
+    }
+
+    public void setPracaPanel(PracaPanel pracaPanel) {
+        this.pracaPanel = pracaPanel;
+    }
+
+    public JButton getBtnWybierz() {
+        return btnWybierz;
+    }
+
+    public void setBtnWybierz(JButton btnWybierz) {
+        this.btnWybierz = btnWybierz;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,58 +89,148 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
+        tabbedPane = new javax.swing.JTabbedPane();
+        przegladaniePanel = new javax.swing.JPanel();
         panelBtn = new javax.swing.JPanel();
         btnRezygnuj = new javax.swing.JButton();
         btnUsun = new javax.swing.JButton();
         btnWybierz = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        kryteriaPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         imie = new javax.swing.JTextField();
         nazwisko = new javax.swing.JTextField();
         nrTel = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        pracaPanel = new naprawa.praca.PracaPanel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
         setBorder(javax.swing.BorderFactory.createTitledBorder("Przeglądanie napraw"));
-        setMinimumSize(new java.awt.Dimension(1000, 600));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setLayout(new java.awt.GridBagLayout());
 
-        panelBtn.setBackground(new java.awt.Color(102, 102, 102));
+        tabbedPane.setBackground(BaksSessionBean.BORDER_COLOR);
+
+        przegladaniePanel.setBackground(BaksSessionBean.BORDER_COLOR);
+        przegladaniePanel.setMinimumSize(new java.awt.Dimension(40, 40));
+        przegladaniePanel.setPreferredSize(new java.awt.Dimension(40, 40));
+        przegladaniePanel.setLayout(new java.awt.GridBagLayout());
+
+        panelBtn.setBackground(BaksSessionBean
+            .BUTTON_PANEL_COLOR);
+        panelBtn.setMinimumSize(new java.awt.Dimension(40, 40));
+        panelBtn.setPreferredSize(new java.awt.Dimension(40, 40));
+        panelBtn.setLayout(new java.awt.GridBagLayout());
 
         btnRezygnuj.setText("Rezygnuj");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 6, 8, 356);
+        panelBtn.add(btnRezygnuj, gridBagConstraints);
 
         btnUsun.setText("Usuń");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 6, 8, 0);
+        panelBtn.add(btnUsun, gridBagConstraints);
 
         btnWybierz.setText("Wybierz");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 419, 8, 0);
+        panelBtn.add(btnWybierz, gridBagConstraints);
 
-        javax.swing.GroupLayout panelBtnLayout = new javax.swing.GroupLayout(panelBtn);
-        panelBtn.setLayout(panelBtnLayout);
-        panelBtnLayout.setHorizontalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addGap(419, 419, 419)
-                .addComponent(btnWybierz)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUsun)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRezygnuj)
-                .addContainerGap(356, Short.MAX_VALUE))
-        );
-        panelBtnLayout.setVerticalGroup(
-            panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBtnLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(panelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRezygnuj)
-                    .addComponent(btnUsun)
-                    .addComponent(btnWybierz))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        przegladaniePanel.add(panelBtn, gridBagConstraints);
 
+        kryteriaPanel.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
+        kryteriaPanel.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setText("Imię");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 10, 0, 0);
+        kryteriaPanel.add(jLabel2, gridBagConstraints);
+
+        jLabel4.setText("Nr tel");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
+        kryteriaPanel.add(jLabel4, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 195;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 10, 0, 10);
+        kryteriaPanel.add(imie, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 195;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 10);
+        kryteriaPanel.add(nazwisko, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 98;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 14, 0);
+        kryteriaPanel.add(nrTel, gridBagConstraints);
+
+        jLabel3.setText("Nazwisko");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
+        kryteriaPanel.add(jLabel3, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        przegladaniePanel.add(kryteriaPanel, gridBagConstraints);
+
+        jPanel1.setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
+        jPanel1.setMinimumSize(new java.awt.Dimension(40, 40));
+        jPanel1.setPreferredSize(new java.awt.Dimension(40, 40));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane2.setBackground(BaksSessionBean.BROWN_COLOR);
+
+        table.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -144,66 +261,39 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
             table.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jLabel2.setText("Imię");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 969;
+        gridBagConstraints.ipady = 409;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 11, 10);
+        jPanel1.add(jScrollPane2, gridBagConstraints);
 
-        jLabel3.setText("Nazwisko");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        przegladaniePanel.add(jPanel1, gridBagConstraints);
 
-        jLabel4.setText("Nr tel");
+        tabbedPane.addTab("Wyszukaj naprawę", przegladaniePanel);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(34, 34, 34)
-                                .addComponent(imie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nazwisko)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(nrTel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(panelBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(imie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(nazwisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(nrTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        pracaPanel.setBackground(BaksSessionBean.BORDER_COLOR);
+        pracaPanel.setPreferredSize(new java.awt.Dimension(40, 40));
+        tabbedPane.addTab("Praca", pracaPanel);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(tabbedPane, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -212,14 +302,18 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUsun;
     private javax.swing.JButton btnWybierz;
     private javax.swing.JTextField imie;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel kryteriaPanel;
     private javax.swing.JTextField nazwisko;
     private javax.swing.JTextField nrTel;
     private javax.swing.JPanel panelBtn;
+    private naprawa.praca.PracaPanel pracaPanel;
+    private javax.swing.JPanel przegladaniePanel;
+    private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
