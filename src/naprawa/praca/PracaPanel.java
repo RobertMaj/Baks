@@ -33,27 +33,27 @@ public class PracaPanel extends javax.swing.JPanel {
     public PracaPanel() {
         initComponents();
         tglInfoNaprawa.initInternalPanel(infoPanel);
-        tglInfoNaprawa.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
-        tglInfoNaprawa.getMainPanel().setBackground(Color.decode("#B8A48E"));
+        tglInfoNaprawa.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
+        tglInfoNaprawa.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
         
         tglCzesci.initInternalPanel(czesciPanel);
-        tglCzesci.getNaglowekPanel().setBackground(Color.decode("#CDE2BD"));
-        tglCzesci.getMainPanel().setBackground(Color.decode("#B8CBAA"));
-        czesciPanel.getPanelWybor().setBackground(Color.decode("#B8CBAA"));
+        tglCzesci.getNaglowekPanel().setBackground(BaksSessionBean.GREEN_COLOR);
+        tglCzesci.getMainPanel().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
+        czesciPanel.getPanelWybor().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
         
         tglKosztNaprawy.initInternalPanel(naprawaPanel);
-        tglKosztNaprawy.getNaglowekPanel().setBackground(Color.decode("#CDE2BD"));
-        tglKosztNaprawy.getMainPanel().setBackground(Color.decode("#B8CBAA"));
-        naprawaPanel.getPanelWybor().setBackground(Color.decode("#B8CBAA"));
+        tglKosztNaprawy.getNaglowekPanel().setBackground(BaksSessionBean.GREEN_COLOR);
+        tglKosztNaprawy.getMainPanel().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
+        naprawaPanel.getPanelWybor().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
         
         tglPodsumowanie.initInternalPanel(podsumowaniePanel);
-        tglPodsumowanie.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
-        tglPodsumowanie.getMainPanel().setBackground(Color.decode("#B8A48E"));
+        tglPodsumowanie.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
+        tglPodsumowanie.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
         
         tglMaterialy.initInternalPanel(materialyPanel);
-        tglMaterialy.getNaglowekPanel().setBackground(Color.decode("#C5B6AA"));
-        tglMaterialy.getMainPanel().setBackground(Color.decode("#B8A48E"));
-        materialyPanel.getPanelWybor().setBackground(Color.decode("#B8A48E"));
+        tglMaterialy.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
+        tglMaterialy.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
+        materialyPanel.getPanelWybor().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 

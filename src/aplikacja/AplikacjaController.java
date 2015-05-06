@@ -94,11 +94,13 @@ public class AplikacjaController extends AbstractController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    getConnection().close();
+                    if (getConnection() != null) {
+                        getConnection().close();
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(LogowanieController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                widok.dispose();
+                System.exit(0);
             }
         });
 

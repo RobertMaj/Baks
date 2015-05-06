@@ -92,6 +92,9 @@ public class BaksSessionBean {
             PANEL_BACKGROUND_PANEL_COLOR = Color.decode(prop.getProperty("panelBackgroundColor"));
             BORDER_COLOR = Color.decode(prop.getProperty("tabPaneBorderColor"));
             BROWN_CIEM_COLOR = Color.decode(prop.getProperty("brownCiemny"));
+            BROWN_COLOR = Color.decode(prop.getProperty("brownJasny"));
+            GREEN_COLOR = Color.decode(prop.getProperty("greenJasny"));
+            GREEN_CIEM_COLOR = Color.decode(prop.getProperty("greenCiemny"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
