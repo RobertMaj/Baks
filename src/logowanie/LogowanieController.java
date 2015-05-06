@@ -38,7 +38,9 @@ public class LogowanieController extends AbstractController {
     private void init() {
         widok = new Logowanie();
         widok.setLocationRelativeTo(null);
-        widok.setVisible(true);
+        if (!BaksSessionBean.isIsIDE()) {
+            widok.setVisible(true);
+        }
 
         widok.getRejestracjaButton().addActionListener(new ActionListener() {
 
@@ -69,6 +71,10 @@ public class LogowanieController extends AbstractController {
             }
         });
 
+        if (BaksSessionBean.isIsIDE()) {
+            BaksSessionBean.setUser(getDaoFactory().getDaoUser().getUser(getConnection(), "blazej.krzciuk@wp.pl"));
+            AplikacjaController controller = new AplikacjaController(getConnection(), getDaoFactory());
+        }
     }
 
     private void akcjaZaloguj() {

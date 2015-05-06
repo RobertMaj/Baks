@@ -33,6 +33,8 @@ public class BaksSessionBean {
     private static DaoFactory baksFactory;
     private static String dbName;
 
+    private static boolean isIDE = false;
+
     private BaksSessionBean() {
         init();
     }
@@ -56,7 +58,7 @@ public class BaksSessionBean {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(BaksSessionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         readProperties();
     }
 
@@ -107,6 +109,14 @@ public class BaksSessionBean {
 
     public void fireMessage(Component cmp, String title, String message) {
         JOptionPane.showMessageDialog(cmp, message, title, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static boolean isIsIDE() {
+        return isIDE;
+    }
+
+    public static void setIsIDE(boolean isIDE) {
+        BaksSessionBean.isIDE = isIDE;
     }
 
     public static boolean isAdministrator() {
