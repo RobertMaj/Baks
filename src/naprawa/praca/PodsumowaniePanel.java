@@ -5,6 +5,12 @@
  */
 package naprawa.praca;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mzuralski
@@ -32,24 +38,24 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tableCzesci = new javax.swing.JTable();
         panelNaprawa = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tableNaprawa = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tableMaterialy = new javax.swing.JTable();
         panelPodsumowanie = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        podsumowanieKoszt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        naprawaKoszt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        materialyKoszt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        czesciKoszt = new javax.swing.JTextField();
+        labelDoZaplaty = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -68,7 +74,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tableCzesci.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -79,7 +85,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tableCzesci);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -101,7 +107,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
         jScrollPane5.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tableNaprawa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -112,7 +118,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jScrollPane5.setViewportView(tableNaprawa);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -149,7 +155,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
         jScrollPane4.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tableMaterialy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -160,7 +166,7 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tableMaterialy);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -190,13 +196,14 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel1, gridBagConstraints);
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
-        jTextField1.setPreferredSize(new java.awt.Dimension(120, 20));
+        podsumowanieKoszt.setBackground(new java.awt.Color(204, 255, 255));
+        podsumowanieKoszt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        podsumowanieKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelPodsumowanie.add(jTextField1, gridBagConstraints);
+        panelPodsumowanie.add(podsumowanieKoszt, gridBagConstraints);
 
         jLabel2.setText("Materiały");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -206,12 +213,12 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel2, gridBagConstraints);
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(120, 20));
+        naprawaKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelPodsumowanie.add(jTextField2, gridBagConstraints);
+        panelPodsumowanie.add(naprawaKoszt, gridBagConstraints);
 
         jLabel3.setText("Naprawa");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -221,12 +228,12 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel3, gridBagConstraints);
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(120, 20));
+        materialyKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelPodsumowanie.add(jTextField3, gridBagConstraints);
+        panelPodsumowanie.add(materialyKoszt, gridBagConstraints);
 
         jLabel4.setText("PODSUMOWANIE");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -236,22 +243,23 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel4, gridBagConstraints);
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(120, 20));
+        czesciKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelPodsumowanie.add(jTextField4, gridBagConstraints);
+        panelPodsumowanie.add(czesciKoszt, gridBagConstraints);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Do zapłaty:");
+        labelDoZaplaty.setBackground(new java.awt.Color(255, 204, 204));
+        labelDoZaplaty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labelDoZaplaty.setText("Do zapłaty:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(34, 0, 9, 0);
-        panelPodsumowanie.add(jLabel5, gridBagConstraints);
+        panelPodsumowanie.add(labelDoZaplaty, gridBagConstraints);
 
         jLabel6.setText("zł");
         panelPodsumowanie.add(jLabel6, new java.awt.GridBagConstraints());
@@ -295,11 +303,11 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupCenaProcent;
+    private javax.swing.JTextField czesciKoszt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -311,14 +319,103 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel labelDoZaplaty;
+    private javax.swing.JTextField materialyKoszt;
+    private javax.swing.JTextField naprawaKoszt;
     private javax.swing.JPanel panelNaprawa;
     private javax.swing.JPanel panelPodsumowanie;
+    private javax.swing.JTextField podsumowanieKoszt;
+    private javax.swing.JTable tableCzesci;
+    private javax.swing.JTable tableMaterialy;
+    private javax.swing.JTable tableNaprawa;
     // End of variables declaration//GEN-END:variables
+
+    public ButtonGroup getBtnGroupCenaProcent() {
+        return btnGroupCenaProcent;
+    }
+
+    public void setBtnGroupCenaProcent(ButtonGroup btnGroupCenaProcent) {
+        this.btnGroupCenaProcent = btnGroupCenaProcent;
+    }
+
+    public JTextField getCzesciKoszt() {
+        return czesciKoszt;
+    }
+
+    public void setCzesciKoszt(JTextField czesciKoszt) {
+        this.czesciKoszt = czesciKoszt;
+    }
+
+    public JLabel getLabelDoZaplaty() {
+        return labelDoZaplaty;
+    }
+
+    public void setLabelDoZaplaty(JLabel labelDoZaplaty) {
+        this.labelDoZaplaty = labelDoZaplaty;
+    }
+
+    public JTextField getMaterialyKoszt() {
+        return materialyKoszt;
+    }
+
+    public void setMaterialyKoszt(JTextField materialyKoszt) {
+        this.materialyKoszt = materialyKoszt;
+    }
+
+    public JTextField getNaprawaKoszt() {
+        return naprawaKoszt;
+    }
+
+    public void setNaprawaKoszt(JTextField naprawaKoszt) {
+        this.naprawaKoszt = naprawaKoszt;
+    }
+
+    public JPanel getPanelNaprawa() {
+        return panelNaprawa;
+    }
+
+    public void setPanelNaprawa(JPanel panelNaprawa) {
+        this.panelNaprawa = panelNaprawa;
+    }
+
+    public JPanel getPanelPodsumowanie() {
+        return panelPodsumowanie;
+    }
+
+    public void setPanelPodsumowanie(JPanel panelPodsumowanie) {
+        this.panelPodsumowanie = panelPodsumowanie;
+    }
+
+    public JTextField getPodsumowanieKoszt() {
+        return podsumowanieKoszt;
+    }
+
+    public void setPodsumowanieKoszt(JTextField podsumowanieKoszt) {
+        this.podsumowanieKoszt = podsumowanieKoszt;
+    }
+
+    public JTable getTableCzesci() {
+        return tableCzesci;
+    }
+
+    public void setTableCzesci(JTable tableCzesci) {
+        this.tableCzesci = tableCzesci;
+    }
+
+    public JTable getTableMaterialy() {
+        return tableMaterialy;
+    }
+
+    public void setTableMaterialy(JTable tableMaterialy) {
+        this.tableMaterialy = tableMaterialy;
+    }
+
+    public JTable getTableNaprawa() {
+        return tableNaprawa;
+    }
+
+    public void setTableNaprawa(JTable tableNaprawa) {
+        this.tableNaprawa = tableNaprawa;
+    }
+
 }

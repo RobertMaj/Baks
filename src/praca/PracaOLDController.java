@@ -160,7 +160,7 @@ public class PracaOLDController extends AbstractController {
         wybranaData = widok.getData().getDate();
         if (wybranyDefect != null) {
             if (widok.getKoszt().getText() != null && !widok.getKoszt().getText().equals("")) {
-                wybranyDefect.setKoszt(Float.parseFloat(widok.getKoszt().getText()));
+                wybranyDefect.setKoszt(Double.parseDouble(widok.getKoszt().getText()));
             }
             wybranyDefect.setData(new Date());
         }

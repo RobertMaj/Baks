@@ -12,17 +12,17 @@ package Model.praca;
 public class Material extends Usluga {
 
     public Material() {
-        setRodzaj(RodzajUslugi.MATERIAL);
+        this.rodzaj = RodzajUslugi.MATERIAL;
     }
 
     public Material(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        setRodzaj(RodzajUslugi.MATERIAL);
+        this.rodzaj = RodzajUslugi.MATERIAL;
     }
 
     @Override
-    double getCena() {
+    public double getCena() {
         return getKoszt();
     }
 }

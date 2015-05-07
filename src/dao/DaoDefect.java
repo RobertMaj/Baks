@@ -43,7 +43,7 @@ public class DaoDefect {
                 defect.setMarka(rs.getString("marka"));
                 defect.setModel(rs.getString("model"));
                 defect.setRokProd(rs.getString("rok_prod"));
-                defect.setKoszt(rs.getFloat("koszt"));
+                defect.setKoszt(rs.getDouble("koszt"));
                 defect.setStatus(TO_StatusDefects.getStatusDefectsById(rs.getInt("status")));
                 defect.setOpis(rs.getString("opis"));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
@@ -79,7 +79,7 @@ public class DaoDefect {
                 defect.setMarka(rs.getString("marka"));
                 defect.setModel(rs.getString("model"));
                 defect.setRokProd(rs.getString("rok_prod"));
-                defect.setKoszt(rs.getFloat("koszt"));
+                defect.setKoszt(rs.getDouble("koszt"));
                 defect.setOpis(rs.getString("opis"));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
                 defect.setCustomer(null);
@@ -110,7 +110,7 @@ public class DaoDefect {
                 defect.setMarka(rs.getString("marka"));
                 defect.setModel(rs.getString("model"));
                 defect.setRokProd(rs.getString("rok_prod"));
-                defect.setKoszt(rs.getFloat("koszt"));
+                defect.setKoszt(rs.getDouble("koszt"));
                 defect.setOpis(rs.getString("opis"));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
 
@@ -140,7 +140,7 @@ public class DaoDefect {
                 defect.setMarka(rs.getString("marka"));
                 defect.setModel(rs.getString("model"));
                 defect.setRokProd(rs.getString("rok_prod"));
-                defect.setKoszt(rs.getFloat("koszt"));
+                defect.setKoszt(rs.getDouble("koszt"));
                 defect.setOpis(rs.getString("opis"));
                 defect.setDataOddanie(rs.getDate("data_oddania"));
 
@@ -162,7 +162,7 @@ public class DaoDefect {
             preparedStatement.setString(i++, defect.getModel());
             preparedStatement.setString(i++, defect.getRokProd());
             preparedStatement.setString(i++, defect.getOpis());
-            preparedStatement.setFloat(i++, defect.getKoszt());
+            preparedStatement.setDouble(i++, defect.getKoszt());
             preparedStatement.setDate(i++, new java.sql.Date(defect.getData().getTime()));
             preparedStatement.setInt(i++, defect.getId());
 
@@ -179,7 +179,7 @@ public class DaoDefect {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             int i = 1;
             preparedStatement.setDate(i++, new java.sql.Date(new Date().getTime()));
-            preparedStatement.setFloat(i++, defect.getKoszt());
+            preparedStatement.setDouble(i++, defect.getKoszt());
             preparedStatement.setInt(i++, defect.getId());
 
             preparedStatement.executeUpdate();

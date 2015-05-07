@@ -9,20 +9,20 @@ package Model.praca;
  *
  * @author jmaj
  */
-public class Naprawa extends Usluga{
-    
+public class Naprawa extends Usluga {
+
     public Naprawa() {
-        setRodzaj(RodzajUslugi.NAPRAWA);
+        this.rodzaj = RodzajUslugi.NAPRAWA;
     }
 
     public Naprawa(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        setRodzaj(RodzajUslugi.NAPRAWA);
+        this.rodzaj = RodzajUslugi.NAPRAWA;
     }
 
     @Override
-    double getCena() {
+    public double getCena() {
         return getKoszt();
     }
 }

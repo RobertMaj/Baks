@@ -5,8 +5,14 @@
  */
 package Model;
 
+import Model.praca.Czesc;
+import Model.praca.Material;
+import Model.praca.Naprawa;
+import Model.praca.RodzajUslugi;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -20,7 +26,10 @@ public class TO_Defect implements Serializable {
     private String model;
     private String rokProd;
     private String opis;
-    private float koszt;
+    private static Double koszt;
+    private static Double kosztCzesci;
+    private static Double kosztNaprawy;
+    private static Double kosztMaterialy;
     private Date dataOddanie;
     private TO_Customer customer;
     private TO_StatusDefects status;
@@ -89,16 +98,12 @@ public class TO_Defect implements Serializable {
         this.opis = opis;
     }
 
-    public Float getKoszt() {
+    public Double getKoszt() {
         return koszt;
     }
 
-    public void setKoszt(Float koszt) {
-        this.koszt = koszt;
-    }
-
-    public void setKoszt(float koszt) {
-        this.koszt = koszt;
+    public static void setKoszt(Double koszt) {
+        koszt = koszt;
     }
 
     public TO_Customer getCustomer() {
@@ -107,6 +112,39 @@ public class TO_Defect implements Serializable {
 
     public void setCustomer(TO_Customer customer) {
         this.customer = customer;
+    }
+
+    public static void aktualizujKoszt(Map<RodzajUslugi, List> map) {
+        koszt = 0.0;
+        kosztCzesci = 0.0;
+        kosztMaterialy = 0.0;
+        kosztNaprawy = 0.0;
+        for (Object item : map.get(RodzajUslugi.CZESC)) {
+            kosztCzesci += ((Czesc) item).getCena();
+        }
+        for (Object item : map.get(RodzajUslugi.NAPRAWA)) {
+            kosztNaprawy += ((Naprawa) item).getKoszt();
+        }
+        for (Object item : map.get(RodzajUslugi.MATERIAL)) {
+            kosztMaterialy += ((Material) item).getKoszt();
+        }
+        koszt = kosztCzesci + kosztMaterialy + kosztNaprawy;
+    }
+
+    public static String getKosztCzesci() {
+        return TO_Invoice.getWynikSumaKoszt(kosztCzesci);
+    }
+
+    public static String getKosztMaterialy() {
+        return TO_Invoice.getWynikSumaKoszt(kosztMaterialy);
+    }
+
+    public static String getKosztNaprawy() {
+        return TO_Invoice.getWynikSumaKoszt(kosztNaprawy);
+    }
+
+    public static String getKosztSuma() {
+        return TO_Invoice.getWynikSumaKoszt(koszt);
     }
 
 }

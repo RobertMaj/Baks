@@ -11,42 +11,53 @@ package Model.praca;
  */
 public class Czesc extends Usluga {
 
-    public static final String PROCENT = "P";
-    public static final String WARTOŚĆ = "W";
-    public static final String BRAK = "B";
+    public static Przelicznik wybranyPrzelicznik = Przelicznik.PROCENT;
 
-    public static String wybranyPrzelicznik = BRAK;
-
-    private String przelicznik;
+    private String przelicznik = "0";
+    private double cena;
 
     public Czesc() {
-        setRodzaj(RodzajUslugi.CZESC);
+        this.rodzaj = RodzajUslugi.MATERIAL;
     }
 
     public Czesc(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        setRodzaj(RodzajUslugi.CZESC);
+        this.rodzaj = RodzajUslugi.MATERIAL;
     }
 
     @Override
-    double getCena() {
-        if (!wybranyPrzelicznik.equals(BRAK)) {
-            return super.getKoszt() * (Double.parseDouble(przelicznik) != 0 ? Double.parseDouble(przelicznik) : 1);
+    public double getCena() {
+        if (wybranyPrzelicznik.equals(Przelicznik.PROCENT)) {
+            return cena = super.getKoszt() + super.getKoszt() * (!(przelicznik.equals("0")) ? getPrzelicznikCena() : 0);
+        } else if (wybranyPrzelicznik.equals(Przelicznik.WARTOSC)) {
+            return cena = super.getKoszt() + (!(przelicznik.equals("0")) ? getPrzelicznikCena() : 0);
         }
-        return super.getKoszt();
+        return 0.0;
     }
 
-    public static String getWybranyPrzelicznik() {
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+
+    public static Przelicznik getWybranyPrzelicznik() {
         return wybranyPrzelicznik;
     }
 
-    public static void setWybranyPrzelicznik(String wybranyPrzelicznik) {
+    public static void setWybranyPrzelicznik(Przelicznik wybranyPrzelicznik) {
         Czesc.wybranyPrzelicznik = wybranyPrzelicznik;
     }
 
     public String getPrzelicznik() {
         return przelicznik;
+    }
+
+    public Double getPrzelicznikCena() {
+        if (wybranyPrzelicznik.equals(Przelicznik.PROCENT)) {
+            return Double.parseDouble(przelicznik) / 100;
+        } else {
+            return Double.parseDouble(przelicznik);
+        }
     }
 
     public void setPrzelicznik(String przelicznik) {

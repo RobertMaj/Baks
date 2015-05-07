@@ -110,6 +110,7 @@ public class NaprawaPrzegladanieController extends AbstractController {
         wybranyDefect = ((TableDefectsModel) widok.getTable().getModel()).getDefectAt(widok.getTable().getSelectedRow());
         wypelnijFormatke();
         PracaController pracaController = new PracaController(getConnection(), getDaoFactory());
+        pracaController.setWybranyDefect(wybranyDefect);
         pracaController.setWidok(getPracaPanel());
         pracaController.akcjaOtworzPrace();
         przejdzDoZakladki(ZAKL_2);

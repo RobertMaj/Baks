@@ -12,10 +12,11 @@ package Model.praca;
 public abstract class Usluga {
 
     private double koszt;
+    private Integer idDefect;
     private String opis;
     public RodzajUslugi rodzaj;
 
-    abstract double getCena();
+    public abstract double getCena();
 
     public String getOpis() {
         return opis;
@@ -37,8 +38,11 @@ public abstract class Usluga {
         this.opis = opis;
     }
 
-    public void setRodzaj(RodzajUslugi rodzaj) {
-        this.rodzaj = rodzaj;
+    public Integer getIdDefect() {
+        return idDefect;
     }
 
+    public void setIdDefect(Integer idDefect) {
+        this.idDefect = idDefect;
+    }
 }

@@ -5,7 +5,8 @@
  */
 package naprawa.praca;
 
-import Model.praca.Usluga;
+import Model.praca.Czesc;
+import Model.praca.Przelicznik;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -13,13 +14,12 @@ import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author RobertM
- * @param <T>
  */
-public class ServiceTableModel<T extends Usluga> extends AbstractTableModel {
+public class CzescTableModel extends AbstractTableModel {
 
-    private List<T> list;
+    private List<Czesc> list;
 
-    public ServiceTableModel(List<T> list) {
+    public CzescTableModel(List<Czesc> list) {
         this.list = new ArrayList<>(list);
     }
 
@@ -30,10 +30,10 @@ public class ServiceTableModel<T extends Usluga> extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 5;
     }
 
-    public T getUslugaAt(int rowIndex) {
+    public Czesc getUslugaAt(int rowIndex) {
         return list.get(rowIndex);
     }
 
@@ -48,7 +48,13 @@ public class ServiceTableModel<T extends Usluga> extends AbstractTableModel {
                 value = "Opis";
                 break;
             case 2:
-                value = "Koszt";
+                value = "Cena";
+                break;
+            case 3:
+                value = "Marża";
+                break;
+            case 4:
+                value = "Razem";
                 break;
         }
         return value;
@@ -57,7 +63,7 @@ public class ServiceTableModel<T extends Usluga> extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object value = "??";
-        T usluga = list.get(rowIndex);
+        Czesc usluga = list.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
@@ -69,15 +75,21 @@ public class ServiceTableModel<T extends Usluga> extends AbstractTableModel {
             case 2:
                 value = usluga.getKoszt();
                 break;
+            case 3:
+                value = usluga.getPrzelicznik() + (usluga.getWybranyPrzelicznik().equals(Przelicznik.PROCENT) ? " %" : " zł");
+                break;
+            case 4:
+                value = usluga.getCena();
+                break;
         }
         return value;
     }
 
-    public List<T> getList() {
+    public List<Czesc> getList() {
         return list;
     }
 
-    public void setList(List<T> list) {
+    public void setList(List<Czesc> list) {
         this.list = list;
     }
 }

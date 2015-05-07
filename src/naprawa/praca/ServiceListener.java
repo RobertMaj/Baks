@@ -5,12 +5,20 @@
  */
 package naprawa.praca;
 
+import Model.praca.RodzajUslugi;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author RobertM
  */
 public interface ServiceListener {
 
-    void fireChangeSerive();
+    void fireCzescTableChanged();
+
+    void fireNaprawaTableChanged();
+
+    void fireMaterialTableChanged();
 
 }

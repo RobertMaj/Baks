@@ -5,11 +5,17 @@
  */
 package naprawa.praca;
 
+import Model.praca.Czesc;
+import Model.praca.Przelicznik;
+import adm.Baks.BaksSessionBean;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -17,6 +23,12 @@ import javax.swing.JTextField;
  * @author mzuralski
  */
 public class PracaZaplataPanel extends javax.swing.JPanel {
+
+    public static Przelicznik wybranyRadio;
+
+    static {
+        wybranyRadio = Przelicznik.PROCENT;
+    }
 
     /**
      * Creates new form GeografiaStrukturaPanel
@@ -41,22 +53,21 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         opis = new javax.swing.JTextField();
         labelCenaKoszt = new javax.swing.JLabel();
         kosztCenaPodst = new javax.swing.JTextField();
-        btnProcent = new javax.swing.JRadioButton();
-        btnKwota = new javax.swing.JRadioButton();
+        radioProcent = new javax.swing.JRadioButton();
+        radioKwota = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         dodajDoCeny = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelPlus = new javax.swing.JLabel();
         labelProcentZl = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelRowna = new javax.swing.JLabel();
         suma = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        radioBrak = new javax.swing.JRadioButton();
+        labelZl = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnDodaj = new javax.swing.JButton();
         btnUsun = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(356, 300));
         setPreferredSize(new java.awt.Dimension(919, 300));
@@ -82,97 +93,106 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         labelCenaKoszt.setText("Koszt/Cena");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(labelCenaKoszt, gridBagConstraints);
 
+        kosztCenaPodst.setBackground(new java.awt.Color(204, 255, 255));
+        kosztCenaPodst.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        kosztCenaPodst.setText("0");
         kosztCenaPodst.setPreferredSize(new java.awt.Dimension(100, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(kosztCenaPodst, gridBagConstraints);
 
-        btnGroupCenaProcent.add(btnProcent);
-        btnProcent.setText("Procent");
+        radioProcent.setBackground(BaksSessionBean
+            .PANEL_BACKGROUND_PANEL_COLOR);
+        btnGroupCenaProcent.add(radioProcent);
+        radioProcent.setText("Procent");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(btnProcent, gridBagConstraints);
+        panelWybor.add(radioProcent, gridBagConstraints);
 
-        btnGroupCenaProcent.add(btnKwota);
-        btnKwota.setText("Kwota");
+        radioKwota.setBackground(BaksSessionBean
+            .PANEL_BACKGROUND_PANEL_COLOR);
+        btnGroupCenaProcent.add(radioKwota);
+        radioKwota.setText("Kwota");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(btnKwota, gridBagConstraints);
+        panelWybor.add(radioKwota, gridBagConstraints);
 
         jLabel3.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(jLabel3, gridBagConstraints);
+
+        dodajDoCeny.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        dodajDoCeny.setText("0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(dodajDoCeny, gridBagConstraints);
 
-        jLabel4.setText("+");
+        labelPlus.setText("+");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(jLabel4, gridBagConstraints);
+        panelWybor.add(labelPlus, gridBagConstraints);
 
         labelProcentZl.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(labelProcentZl, gridBagConstraints);
 
-        jLabel6.setText("=");
+        labelRowna.setText("=");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(jLabel6, gridBagConstraints);
+        panelWybor.add(labelRowna, gridBagConstraints);
+
+        suma.setBackground(new java.awt.Color(204, 255, 255));
+        suma.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        suma.setText("0");
+        suma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0)));
+        suma.setPreferredSize(new java.awt.Dimension(2, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(suma, gridBagConstraints);
 
-        jLabel7.setText("zł");
+        labelZl.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(jLabel7, gridBagConstraints);
+        panelWybor.add(labelZl, gridBagConstraints);
 
-        btnGroupCenaProcent.add(radioBrak);
-        radioBrak.setSelected(true);
-        radioBrak.setText("Brak");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        panelWybor.add(radioBrak, gridBagConstraints);
-
+        jPanel3.setBackground(BaksSessionBean
+            .PANEL_BACKGROUND_PANEL_COLOR);
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         btnDodaj.setText(">");
@@ -192,7 +212,9 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         jPanel3.add(btnUsun, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weighty = 1.0;
         panelWybor.add(jPanel3, gridBagConstraints);
@@ -208,7 +230,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -219,7 +241,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
                 "Opis", "Koszt"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -236,6 +258,36 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         add(jPanel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void ukryjMarza() {
+        radioProcent.setVisible(false);
+        radioKwota.setVisible(false);
+        dodajDoCeny.setVisible(false);
+        suma.setVisible(false);
+        labelCenaKoszt.setVisible(false);
+        labelPlus.setVisible(false);
+        labelProcentZl.setVisible(false);
+        labelRowna.setVisible(false);
+        labelZl.setVisible(false);
+    }
+
+    public Przelicznik getWybranyRadio() {
+        if (radioKwota.isSelected()) {
+            wybranyRadio = Przelicznik.WARTOSC;
+        } else if (radioProcent.isSelected()) {
+            wybranyRadio = Przelicznik.PROCENT;
+        }
+        return wybranyRadio;
+    }
+
+    public void setSelectedRadio(Przelicznik radio) {
+        wybranyRadio = radio;
+        if (wybranyRadio.equals(Przelicznik.PROCENT)) {
+            radioProcent.setSelected(true);
+        } else if (wybranyRadio.equals(Przelicznik.WARTOSC)) {
+            radioKwota.setSelected(true);
+        }
+    }
 
     public JButton getBtnDodaj() {
         return btnDodaj;
@@ -254,19 +306,27 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
     }
 
     public JRadioButton getBtnKwota() {
-        return btnKwota;
+        return radioKwota;
     }
 
     public void setBtnKwota(JRadioButton btnKwota) {
-        this.btnKwota = btnKwota;
+        this.radioKwota = btnKwota;
     }
 
     public JRadioButton getBtnProcent() {
-        return btnProcent;
+        return radioProcent;
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public void setTable(JTable table) {
+        this.table = table;
     }
 
     public void setBtnProcent(JRadioButton btnProcent) {
-        this.btnProcent = btnProcent;
+        this.radioProcent = btnProcent;
     }
 
     public JButton getBtnUsun() {
@@ -325,14 +385,6 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         this.panelWybor = panelWybor;
     }
 
-    public JRadioButton getRadioBrak() {
-        return radioBrak;
-    }
-
-    public void setRadioBrak(JRadioButton radioBrak) {
-        this.radioBrak = radioBrak;
-    }
-
     public JTextField getSuma() {
         return suma;
     }
@@ -345,25 +397,65 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.ButtonGroup btnGroupCenaProcent;
-    private javax.swing.JRadioButton btnKwota;
-    private javax.swing.JRadioButton btnProcent;
     private javax.swing.JButton btnUsun;
     private javax.swing.JTextField dodajDoCeny;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField kosztCenaPodst;
     private javax.swing.JLabel labelCenaKoszt;
+    private javax.swing.JLabel labelPlus;
     private javax.swing.JLabel labelProcentZl;
+    private javax.swing.JLabel labelRowna;
+    private javax.swing.JLabel labelZl;
     private javax.swing.JTextField opis;
     private javax.swing.JPanel panelWybor;
-    private javax.swing.JRadioButton radioBrak;
+    private javax.swing.JRadioButton radioKwota;
+    private javax.swing.JRadioButton radioProcent;
     private javax.swing.JTextField suma;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLabelPlus() {
+        return labelPlus;
+    }
+
+    public void setLabelPlus(JLabel labelPlus) {
+        this.labelPlus = labelPlus;
+    }
+
+    public JLabel getLabelRowna() {
+        return labelRowna;
+    }
+
+    public void setLabelRowna(JLabel labelRowna) {
+        this.labelRowna = labelRowna;
+    }
+
+    public JLabel getLabelZl() {
+        return labelZl;
+    }
+
+    public void setLabelZl(JLabel labelZl) {
+        this.labelZl = labelZl;
+    }
+
+    public JRadioButton getRadioKwota() {
+        return radioKwota;
+    }
+
+    public void setRadioKwota(JRadioButton radioKwota) {
+        this.radioKwota = radioKwota;
+    }
+
+    public JRadioButton getRadioProcent() {
+        return radioProcent;
+    }
+
+    public void setRadioProcent(JRadioButton radioProcent) {
+        this.radioProcent = radioProcent;
+    }
+
 }
