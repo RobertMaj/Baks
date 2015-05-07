@@ -12,13 +12,13 @@ package Model.praca;
 public class Naprawa extends Usluga{
     
     public Naprawa() {
-        setRodzaj("N");
+        setRodzaj(RodzajUslugi.NAPRAWA);
     }
 
     public Naprawa(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        setRodzaj("N");
+        setRodzaj(RodzajUslugi.NAPRAWA);
     }
 
     @Override

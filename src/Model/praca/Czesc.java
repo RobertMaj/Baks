@@ -20,13 +20,13 @@ public class Czesc extends Usluga {
     private String przelicznik;
 
     public Czesc() {
-        setRodzaj("C");
+        setRodzaj(RodzajUslugi.CZESC);
     }
 
     public Czesc(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        setRodzaj("C");
+        setRodzaj(RodzajUslugi.CZESC);
     }
 
     @Override

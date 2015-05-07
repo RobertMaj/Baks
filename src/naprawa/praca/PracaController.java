@@ -8,11 +8,15 @@ package naprawa.praca;
 import Model.praca.Czesc;
 import Model.praca.Material;
 import Model.praca.Naprawa;
+import Model.praca.RodzajUslugi;
+import Model.praca.Usluga;
 import adm.Baks.AbstractController;
 import dao.DaoFactory;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import swing.UITogglePanel;
 
 /**
@@ -22,6 +26,13 @@ import swing.UITogglePanel;
 public class PracaController extends AbstractController {
 
     private PracaPanel widok;
+
+    private ASeriveConntroller czesciController;
+    private ASeriveConntroller materialyController;
+    private ASeriveConntroller naprawaController;
+    private ServiceListener podsumowanieController;
+
+    private Map<RodzajUslugi, List<Usluga>> mapaUslug = null;
 
     UITogglePanel.TogglePanelOpenCloseListener listener = new UITogglePanel.TogglePanelOpenCloseListener() {
 
@@ -37,11 +48,25 @@ public class PracaController extends AbstractController {
 
     public PracaController(Connection connection, DaoFactory daoFactory) {
         super(connection, daoFactory);
+        this.mapaUslug = new HashMap<>();
     }
-
 
     public void akcjaOtworzPrace() {
         ustawRozwiniecieZakladek();
+
+        podsumowanieController = new PodsumowanieConntroller(((PodsumowaniePanel) widok.getTglPodsumowanie().getMainPanel()), getConnection(), getDaoFactory());
+
+        czesciController = new ASeriveConntrollerImpl(((PracaZaplataPanel) widok.getTglCzesci().getMainPanel()), getConnection(), getDaoFactory());
+        czesciController.setListaUslug(mapaUslug.get(RodzajUslugi.CZESC));
+        czesciController.addFireServiceListener(podsumowanieController);
+
+        materialyController = new ASeriveConntrollerImpl(((PracaZaplataPanel) widok.getTglMaterialy().getMainPanel()), getConnection(), getDaoFactory());
+        materialyController.setListaUslug(mapaUslug.get(RodzajUslugi.MATERIAL));
+        materialyController.addFireServiceListener(podsumowanieController);
+
+        naprawaController = new ASeriveConntrollerImpl(((PracaZaplataPanel) widok.getTglKosztNaprawy().getMainPanel()), getConnection(), getDaoFactory());
+        naprawaController.setListaUslug(mapaUslug.get(RodzajUslugi.NAPRAWA));
+        naprawaController.addFireServiceListener(podsumowanieController);
     }
 
     public PracaPanel getWidok() {

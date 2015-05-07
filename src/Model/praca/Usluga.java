@@ -13,7 +13,7 @@ public abstract class Usluga {
 
     private double koszt;
     private String opis;
-    public String rodzaj;
+    public RodzajUslugi rodzaj;
 
     abstract double getCena();
 
@@ -21,7 +21,7 @@ public abstract class Usluga {
         return opis;
     }
 
-    public String getRodzaj() {
+    public RodzajUslugi getRodzaj() {
         return rodzaj;
     }
 
@@ -37,7 +37,7 @@ public abstract class Usluga {
         this.opis = opis;
     }
 
-    public void setRodzaj(String rodzaj) {
+    public void setRodzaj(RodzajUslugi rodzaj) {
         this.rodzaj = rodzaj;
     }
 

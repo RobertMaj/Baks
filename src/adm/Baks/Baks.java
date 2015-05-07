@@ -5,6 +5,7 @@
  */
 package adm.Baks;
 
+import javax.sound.midi.SysexMessage;
 import logowanie.LogowanieController;
 
 /**
@@ -28,6 +29,7 @@ public class Baks {
             LogowanieController con = new LogowanieController(BaksSessionBean.getConnection(), BaksSessionBean.getBaksFactory());
         } catch (Exception ex) {
             BaksSessionBean.getInstance().fireMessage(null, "Aplikacja", "Brak połączenia z internetem");
+            System.exit(0);
         }
     }
 

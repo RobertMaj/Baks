@@ -5,6 +5,8 @@
  */
 package naprawa.praca;
 
+import adm.Baks.BaksSessionBean;
+
 /**
  *
  * @author jmaj
@@ -51,9 +53,11 @@ public class PracaInfoPanel extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(123, 150));
 
+        jTextArea1.setBackground(BaksSessionBean
+            .BLUE_COLOR);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setPreferredSize(new java.awt.Dimension(104, 140));
         jScrollPane1.setViewportView(jTextArea1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

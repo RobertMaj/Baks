@@ -43,6 +43,7 @@ public class BaksSessionBean {
     public static Color BROWN_COLOR;
     public static Color GREEN_CIEM_COLOR;
     public static Color GREEN_COLOR;
+    public static Color BLUE_COLOR;
     
 
     private static boolean isIDE = false;
@@ -95,6 +96,7 @@ public class BaksSessionBean {
             BROWN_COLOR = Color.decode(prop.getProperty("brownJasny"));
             GREEN_COLOR = Color.decode(prop.getProperty("greenJasny"));
             GREEN_CIEM_COLOR = Color.decode(prop.getProperty("greenCiemny"));
+            BLUE_COLOR = Color.decode(prop.getProperty("blue"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
