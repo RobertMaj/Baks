@@ -28,4 +28,13 @@ public enum Przelicznik {
         this.id = id;
     }
 
+    public static Przelicznik getPrzelicznikById(String id) {
+        for (Przelicznik item : values()) {
+            if (item.getId().equals(id)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
 }

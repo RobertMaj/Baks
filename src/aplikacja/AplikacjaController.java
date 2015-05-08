@@ -59,27 +59,9 @@ public class AplikacjaController extends AbstractController {
 
         if (!BaksSessionBean.isAdministrator()) {
             widok.getUzytkownicyAdm().setVisible(false);
+            widok.getMojeDaneMenu().setVisible(false);
+            widok.getMenuPlatnosci().setVisible(false);
         }
-
-        if (BaksSessionBean.isPracownik()) {
-            widok.getHistoriaMenu().setVisible(false);
-        }
-
-        if (BaksSessionBean.isUzytkownik()) {
-            widok.getPracaMenu().setVisible(false);
-        }
-
-        if (BaksSessionBean.isPracownik()) {
-            widok.getNaprawaMenu().setVisible(false);
-        }
-
-        widok.getZapiszMenuItem().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                zapiszNapraweInit();
-            }
-        });
 
         widok.getPrzegladajMenuItem().addActionListener(new ActionListener() {
 
@@ -128,14 +110,6 @@ public class AplikacjaController extends AbstractController {
             }
         });
 
-        widok.getPrzegladajHistItem().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                initHistoria();
-            }
-        });
-
         widok.getDodajUzytkownikaItem().addActionListener(new ActionListener() {
 
             @Override
@@ -171,7 +145,7 @@ public class AplikacjaController extends AbstractController {
 
     private void przegladajNaprawyInit() {
         akcjaRezygnuj();
-        NaprawaPrzegladanieController controller = new NaprawaPrzegladanieController(getConnection(), getDaoFactory());
+        NaprawaZapisController controller = new NaprawaZapisController(getConnection(), getDaoFactory());
         initWidok(controller.getWidok());
     }
 
@@ -232,10 +206,6 @@ public class AplikacjaController extends AbstractController {
     }
 
     private void initPraca() {
-//        akcjaRezygnuj();
-//        PracaOLDController controller = new PracaOLDController(getConnection(), getDaoFactory());
-//        initWidok(controller.getWidok());
-
         akcjaRezygnuj();
         NaprawaPrzegladanieController controller = new NaprawaPrzegladanieController(getConnection(), getDaoFactory());
         initWidok(controller.getWidok());

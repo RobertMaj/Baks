@@ -11,6 +11,7 @@ package Model.praca;
  */
 public abstract class Usluga {
 
+    private Integer id;
     private double koszt;
     private Integer idDefect;
     private String opis;
@@ -45,4 +46,13 @@ public abstract class Usluga {
     public void setIdDefect(Integer idDefect) {
         this.idDefect = idDefect;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

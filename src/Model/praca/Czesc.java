@@ -11,19 +11,19 @@ package Model.praca;
  */
 public class Czesc extends Usluga {
 
-    public static Przelicznik wybranyPrzelicznik = Przelicznik.PROCENT;
+    public Przelicznik wybranyPrzelicznik = Przelicznik.PROCENT;
 
     private String przelicznik = "0";
     private double cena;
 
     public Czesc() {
-        this.rodzaj = RodzajUslugi.MATERIAL;
+        this.rodzaj = RodzajUslugi.CZESC;
     }
 
     public Czesc(String opis, double koszt) {
         setKoszt(koszt);
         setOpis(opis);
-        this.rodzaj = RodzajUslugi.MATERIAL;
+        this.rodzaj = RodzajUslugi.CZESC;
     }
 
     @Override
@@ -40,12 +40,12 @@ public class Czesc extends Usluga {
         this.cena = cena;
     }
 
-    public static Przelicznik getWybranyPrzelicznik() {
+    public Przelicznik getWybranyPrzelicznik() {
         return wybranyPrzelicznik;
     }
 
-    public static void setWybranyPrzelicznik(Przelicznik wybranyPrzelicznik) {
-        Czesc.wybranyPrzelicznik = wybranyPrzelicznik;
+    public void setWybranyPrzelicznik(Przelicznik wybranyPrzelicznik) {
+        this.wybranyPrzelicznik = wybranyPrzelicznik;
     }
 
     public String getPrzelicznik() {
@@ -64,4 +64,14 @@ public class Czesc extends Usluga {
         this.przelicznik = przelicznik;
     }
 
+    @Override
+    public Czesc clone() throws CloneNotSupportedException {
+        Czesc czesc = new Czesc();
+        czesc.setCena(this.cena);
+        czesc.setIdDefect(this.getIdDefect());
+        czesc.setKoszt(this.getKoszt());
+        czesc.setPrzelicznik(this.przelicznik);
+        czesc.setOpis(this.getOpis());
+        return czesc;
+    }
 }

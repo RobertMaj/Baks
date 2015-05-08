@@ -5,9 +5,11 @@
  */
 package naprawa.praca;
 
-import Model.praca.RodzajUslugi;
+import Model.TO_Defect;
+import Model.praca.Czesc;
+import Model.praca.Material;
+import Model.praca.Naprawa;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -15,10 +17,11 @@ import java.util.Map;
  */
 public interface ServiceListener {
 
-    void fireCzescTableChanged();
+    void fireCzescTableChanged(List<Czesc> lista);
 
-    void fireNaprawaTableChanged();
+    void fireNaprawaTableChanged(List<Naprawa> lista);
 
-    void fireMaterialTableChanged();
+    void fireMaterialTableChanged(List<Material> lista);
 
+    void fireAktualizujDefect(TO_Defect defect);
 }

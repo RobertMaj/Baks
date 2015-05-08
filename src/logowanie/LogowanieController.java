@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import rejestracja.RejestracjaController;
 
 /**
@@ -41,7 +40,7 @@ public class LogowanieController extends AbstractController {
         if (!BaksSessionBean.isIsIDE()) {
             widok.setVisible(true);
         }
-
+        widok.getRejestracjaButton().setVisible(false);
         widok.getRejestracjaButton().addActionListener(new ActionListener() {
 
             @Override
@@ -55,7 +54,9 @@ public class LogowanieController extends AbstractController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    getConnection().close();
+                    if (getConnection() != null) {
+                        getConnection().close();
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(LogowanieController.class.getName()).log(Level.SEVERE, null, ex);
                 }

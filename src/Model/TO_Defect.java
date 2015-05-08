@@ -5,14 +5,8 @@
  */
 package Model;
 
-import Model.praca.Czesc;
-import Model.praca.Material;
-import Model.praca.Naprawa;
-import Model.praca.RodzajUslugi;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -26,10 +20,11 @@ public class TO_Defect implements Serializable {
     private String model;
     private String rokProd;
     private String opis;
-    private static Double koszt;
-    private static Double kosztCzesci;
-    private static Double kosztNaprawy;
-    private static Double kosztMaterialy;
+    private Double koszt;
+    private Double kosztCzesci;
+    private Double kosztNaprawy;
+    private Double kosztMaterialy;
+    private double rabat = 0.0;
     private Date dataOddanie;
     private TO_Customer customer;
     private TO_StatusDefects status;
@@ -102,8 +97,8 @@ public class TO_Defect implements Serializable {
         return koszt;
     }
 
-    public static void setKoszt(Double koszt) {
-        koszt = koszt;
+    public void setKoszt(Double koszt) {
+        this.koszt = koszt;
     }
 
     public TO_Customer getCustomer() {
@@ -114,37 +109,91 @@ public class TO_Defect implements Serializable {
         this.customer = customer;
     }
 
-    public static void aktualizujKoszt(Map<RodzajUslugi, List> map) {
-        koszt = 0.0;
-        kosztCzesci = 0.0;
-        kosztMaterialy = 0.0;
-        kosztNaprawy = 0.0;
-        for (Object item : map.get(RodzajUslugi.CZESC)) {
-            kosztCzesci += ((Czesc) item).getCena();
-        }
-        for (Object item : map.get(RodzajUslugi.NAPRAWA)) {
-            kosztNaprawy += ((Naprawa) item).getKoszt();
-        }
-        for (Object item : map.get(RodzajUslugi.MATERIAL)) {
-            kosztMaterialy += ((Material) item).getKoszt();
-        }
-        koszt = kosztCzesci + kosztMaterialy + kosztNaprawy;
-    }
-
-    public static String getKosztCzesci() {
+//    public static void aktualizujKoszt(Map<RodzajUslugi, List> map) {
+//        koszt = 0.0;
+//        kosztCzesci = 0.0;
+//        kosztMaterialy = 0.0;
+//        kosztNaprawy = 0.0;
+//        for (Object item : map.get(RodzajUslugi.CZESC)) {
+//            kosztCzesci += ((Czesc) item).getCena();
+//        }
+//        for (Object item : map.get(RodzajUslugi.NAPRAWA)) {
+//            kosztNaprawy += ((Naprawa) item).getKoszt();
+//        }
+//        for (Object item : map.get(RodzajUslugi.MATERIAL)) {
+//            kosztMaterialy += ((Material) item).getKoszt();
+//        }
+//        koszt = kosztCzesci + kosztMaterialy + kosztNaprawy;
+//    }
+    public String getKosztCzesciS() {
         return TO_Invoice.getWynikSumaKoszt(kosztCzesci);
     }
 
-    public static String getKosztMaterialy() {
+    public String getKosztMaterialyS() {
         return TO_Invoice.getWynikSumaKoszt(kosztMaterialy);
     }
 
-    public static String getKosztNaprawy() {
+    public String getKosztNaprawyS() {
         return TO_Invoice.getWynikSumaKoszt(kosztNaprawy);
     }
 
-    public static String getKosztSuma() {
+    public String getKosztSumaS() {
         return TO_Invoice.getWynikSumaKoszt(koszt);
     }
 
+    public Double getKosztCzesci() {
+        return kosztCzesci;
+    }
+
+    public void setKosztCzesci(Double kosztCzesci) {
+        this.kosztCzesci = kosztCzesci;
+    }
+
+    public Double getKosztNaprawy() {
+        return kosztNaprawy;
+    }
+
+    public void setKosztNaprawy(Double kosztNaprawy) {
+        this.kosztNaprawy = kosztNaprawy;
+    }
+
+    public Double getKosztMaterialy() {
+        return kosztMaterialy;
+    }
+
+    public void setKosztMaterialy(Double kosztMaterialy) {
+        this.kosztMaterialy = kosztMaterialy;
+    }
+
+    public String getInfoNaprawa() {
+        return (this.getCustomer().getNameS() + ' ' + this.getCustomer().getSurnameS() + ' ' + this.getCustomer().getPhoneS()
+                + "      " + this.getMarkaS() + ' ' + this.getModelS()).toUpperCase();
+
+    }
+
+    private String getModelS() {
+        if (this.model == null) {
+            return "";
+        }
+        return model;
+    }
+
+    private String getMarkaS() {
+        if (this.marka == null) {
+            return "";
+        }
+        return marka;
+    }
+
+    public double getRabat() {
+        return rabat;
+    }
+
+    public void setRabat(double rabat) {
+        this.rabat = rabat;
+    }
+
+    public void obliczRabat() {
+        this.koszt = koszt - (koszt * (rabat == 0.0 ? 0 : (rabat / 100)));
+    }
 }

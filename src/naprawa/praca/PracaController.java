@@ -6,18 +6,19 @@
 package naprawa.praca;
 
 import Model.TO_Defect;
-import Model.praca.Czesc;
-import Model.praca.Material;
-import Model.praca.Naprawa;
+import Model.TO_StatusDefects;
 import Model.praca.RodzajUslugi;
-import Model.praca.Usluga;
 import adm.Baks.AbstractController;
+import adm.Baks.BaksSessionBean;
+import aplikacja.AplikacjaController;
 import dao.DaoFactory;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import naprawa.przegladanie.NaprawaPrzegladanieController;
 import swing.UITogglePanel;
 
 /**
@@ -27,6 +28,8 @@ import swing.UITogglePanel;
 public class PracaController extends AbstractController {
 
     private PracaPanel widok;
+
+    private NaprawaPrzegladanieController nadrzednyController;
 
     private TO_Defect wybranyDefect;
 
@@ -41,52 +44,119 @@ public class PracaController extends AbstractController {
 
         @Override
         public void openCloseActionPerformed(UITogglePanel.OpenCloseActionEvent evt) {
-            widok.getjScrollPane1().scrollRectToVisible(evt.getTogglePanel().getInternalPanel().getBounds());
         }
     };
 
-//    private List<Czesc> listCzesci = new ArrayList<>();
-//    private List<Material> listaMaterialow = new ArrayList<>();
-//    private List<Naprawa> listaNapraw = new ArrayList<>();
     public PracaController(Connection connection, DaoFactory daoFactory) {
         super(connection, daoFactory);
     }
 
-    public void initMapa() {
-        if (mapaUslug == null) {
-            mapaUslug = new HashMap<>();
-            mapaUslug.put(RodzajUslugi.CZESC, new ArrayList<Czesc>());
-            mapaUslug.put(RodzajUslugi.MATERIAL, new ArrayList<Material>());
-            mapaUslug.put(RodzajUslugi.NAPRAWA, new ArrayList<Naprawa>());
-        } else {
-            if (mapaUslug.containsKey(RodzajUslugi.CZESC)) {
-                mapaUslug.put(RodzajUslugi.CZESC, new ArrayList<Czesc>());
-            } else if (mapaUslug.containsKey(RodzajUslugi.MATERIAL)) {
-                mapaUslug.put(RodzajUslugi.MATERIAL, new ArrayList<Material>());
-            } else if (mapaUslug.containsKey(RodzajUslugi.NAPRAWA)) {
-                mapaUslug.put(RodzajUslugi.NAPRAWA, new ArrayList<Naprawa>());
+    public void initListners() {
+        widok.getBtnZakonczPrace().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                akcjaZakonczPrace();
             }
-        }
+
+            private void akcjaZakonczPrace() {
+                wybranyDefect.setDataOddanie(new Date());
+                wybranyDefect.setStatus(TO_StatusDefects.ZAKONCZONY);
+                getDaoFactory().getDaoDefect().updateDefect(getConnection(), wybranyDefect);
+                BaksSessionBean.getInstance().fireMessage(widok, "Praca", "Zakończono prace");
+                akcjaWyjdz();
+            }
+        });
+
+        widok.getBtnDrukuj().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                akcjaDrukuj();
+            }
+
+            private void akcjaDrukuj() {
+            }
+        });
+
+        widok.getBtnRezygnuj().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                akcjaWyjdz();
+            }
+        });
+    }
+
+    public void akcjaWyjdz() {
+        nadrzednyController.przejdzDoZakladki(NaprawaPrzegladanieController.ZAKL_1);
+    }
+
+    public void initMapa() {
+        mapaUslug = getDaoFactory().getDaoDefect().pobierzUslugi(getConnection(), wybranyDefect);
     }
 
     public void akcjaOtworzPrace() {
         initMapa();
         ustawRozwiniecieZakladek();
 
-        podsumowanieController = new PodsumowanieController(((PodsumowaniePanel) widok.getTglPodsumowanie().getMainPanel()), getConnection(), getDaoFactory());
-        ((PodsumowanieController) podsumowanieController).setListaUslug(mapaUslug);
-        
-        czesciController = new CzescServiceController(((PracaZaplataPanel) widok.getTglCzesci().getMainPanel()), getConnection(), getDaoFactory());
+        podsumowanieController = new PodsumowanieController(getConnection(), getDaoFactory());
+        ((PodsumowanieController) podsumowanieController).setWidok(((PodsumowaniePanel) widok.getTglPodsumowanie().getMainPanel()));
+        ((PodsumowanieController) podsumowanieController).setWybranyDefect(wybranyDefect);
+
+        czesciController = new CzescServiceController(getConnection(), getDaoFactory());
+        czesciController.setWidok(((PracaZaplataPanel) widok.getTglCzesci().getMainPanel()));
+        czesciController.initListeners();
         czesciController.init(new CzescTableModel(mapaUslug.get(RodzajUslugi.CZESC)), mapaUslug.get(RodzajUslugi.CZESC), wybranyDefect);
         czesciController.addFireServiceListener(podsumowanieController);
 
-        materialyController = new MaterialServiceController(((PracaZaplataPanel) widok.getTglMaterialy().getMainPanel()), getConnection(), getDaoFactory());
+        materialyController = new MaterialServiceController(getConnection(), getDaoFactory());
+        materialyController.setWidok(((PracaZaplataPanel) widok.getTglMaterialy().getMainPanel()));
+        materialyController.initListeners();
         materialyController.init(new ServiceTableModel(mapaUslug.get(RodzajUslugi.MATERIAL)), mapaUslug.get(RodzajUslugi.MATERIAL), wybranyDefect);
         materialyController.addFireServiceListener(podsumowanieController);
 
-        naprawaController = new NaprawaServiceController(((PracaZaplataPanel) widok.getTglKosztNaprawy().getMainPanel()), getConnection(), getDaoFactory());
+        naprawaController = new NaprawaServiceController(getConnection(), getDaoFactory());
+        naprawaController.setWidok(((PracaZaplataPanel) widok.getTglKosztNaprawy().getMainPanel()));
+        naprawaController.initListeners();
         naprawaController.init(new ServiceTableModel(mapaUslug.get(RodzajUslugi.NAPRAWA)), mapaUslug.get(RodzajUslugi.NAPRAWA), wybranyDefect);
         naprawaController.addFireServiceListener(podsumowanieController);
+
+        ((PodsumowanieController) podsumowanieController).initTableCzesci(((CzescTableModel) czesciController.getModel()).getList());
+        ((PodsumowanieController) podsumowanieController).initTableNaprawa(((ServiceTableModel) naprawaController.getModel()).getList());
+        ((PodsumowanieController) podsumowanieController).initTableMaterialy(((ServiceTableModel) materialyController.getModel()).getList());
+        ((PodsumowanieController) podsumowanieController).obliczPodsumowanie();
+        ((PodsumowanieController) podsumowanieController).initListener();
+        wypelnijInfoOSpisie();
+
+//        podsumowanieController = new PodsumowanieController();
+//        ((PodsumowanieController) podsumowanieController).setWidok(((PodsumowaniePanel) widok.getTglPodsumowanie().getMainPanel()));
+//        ((PodsumowanieController) podsumowanieController).setWybranyDefect(wybranyDefect);
+//
+//        czesciController = new CzescServiceController();
+//        czesciController.setWidok(((PracaZaplataPanel) widok.getTglCzesci().getMainPanel()));
+//        czesciController.initListeners();
+//        czesciController.init(new CzescTableModel(mapaUslug.get(RodzajUslugi.CZESC)), mapaUslug.get(RodzajUslugi.CZESC), wybranyDefect);
+//        czesciController.addFireServiceListener(podsumowanieController);
+//
+//        materialyController = new MaterialServiceController();
+//        materialyController.setWidok(((PracaZaplataPanel) widok.getTglMaterialy().getMainPanel()));
+//        materialyController.initListeners();
+//        materialyController.init(new ServiceTableModel(mapaUslug.get(RodzajUslugi.MATERIAL)), mapaUslug.get(RodzajUslugi.MATERIAL), wybranyDefect);
+//        materialyController.addFireServiceListener(podsumowanieController);
+//
+//        naprawaController = new NaprawaServiceController();
+//        naprawaController.setWidok(((PracaZaplataPanel) widok.getTglKosztNaprawy().getMainPanel()));
+//        naprawaController.initListeners();
+//        naprawaController.init(new ServiceTableModel(mapaUslug.get(RodzajUslugi.NAPRAWA)), mapaUslug.get(RodzajUslugi.NAPRAWA), wybranyDefect);
+//        naprawaController.addFireServiceListener(podsumowanieController);
+//
+//        ((PodsumowanieController) podsumowanieController).initTableCzesci(((CzescTableModel) czesciController.getModel()).getList());
+//        ((PodsumowanieController) podsumowanieController).initTableNaprawa(((ServiceTableModel) naprawaController.getModel()).getList());
+//        ((PodsumowanieController) podsumowanieController).initTableMaterialy(((ServiceTableModel) materialyController.getModel()).getList());
+//        ((PodsumowanieController) podsumowanieController).obliczPodsumowanie();
+//        ((PodsumowanieController) podsumowanieController).initListener();
+//        wypelnijInfoOSpisie();
     }
 
     public PracaPanel getWidok() {
@@ -105,31 +175,9 @@ public class PracaController extends AbstractController {
         widok.getTglKosztNaprawy().setOpen(false);
         widok.getTglMaterialy().setOpen(false);
         widok.getTglPodsumowanie().setOpen(false);
+        widok.getTglInfoNaprawa().setOpen(false);
     }
 
-//    public List<Czesc> getListCzesci() {
-//        return listCzesci;
-//    }
-//
-//    public void setListCzesci(List<Czesc> listCzesci) {
-//        this.listCzesci = listCzesci;
-//    }
-//
-//    public List<Material> getListaMaterialow() {
-//        return listaMaterialow;
-//    }
-//
-//    public void setListaMaterialow(List<Material> listaMaterialow) {
-//        this.listaMaterialow = listaMaterialow;
-//    }
-//
-//    public List<Naprawa> getListaNapraw() {
-//        return listaNapraw;
-//    }
-//
-//    public void setListaNapraw(List<Naprawa> listaNapraw) {
-//        this.listaNapraw = listaNapraw;
-//    }
     @Override
     public void czytajFormatke() {
     }
@@ -152,6 +200,28 @@ public class PracaController extends AbstractController {
 
     public void setMapaUslug(Map<RodzajUslugi, List> mapaUslug) {
         this.mapaUslug = mapaUslug;
+    }
+
+    public void wypelnijInfoOSpisie() {
+        widok.getTglInfoNaprawa().setTytul("INFORMACJE O NAPRAWIE - " + wybranyDefect.getInfoNaprawa());
+        getInfoPracaPanel().getMarka().setText(wybranyDefect.getMarka());
+        getInfoPracaPanel().getModel().setText(wybranyDefect.getModel());
+        getInfoPracaPanel().getImie().setText(wybranyDefect.getCustomer().getName());
+        getInfoPracaPanel().getNazwisko().setText(wybranyDefect.getCustomer().getSurname());
+        getInfoPracaPanel().getNrTel().setText(wybranyDefect.getCustomer().getPhone());
+        getInfoPracaPanel().getOpis().setText(wybranyDefect.getOpis());
+    }
+
+    public PracaInfoPanel getInfoPracaPanel() {
+        return ((PracaInfoPanel) widok.getTglInfoNaprawa().getMainPanel());
+    }
+
+    public NaprawaPrzegladanieController getNadrzednyController() {
+        return nadrzednyController;
+    }
+
+    public void setNadrzednyController(NaprawaPrzegladanieController nadrzednyController) {
+        this.nadrzednyController = nadrzednyController;
     }
 
 }

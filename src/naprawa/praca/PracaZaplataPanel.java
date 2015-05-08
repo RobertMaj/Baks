@@ -5,11 +5,8 @@
  */
 package naprawa.praca;
 
-import Model.praca.Czesc;
 import Model.praca.Przelicznik;
 import adm.Baks.BaksSessionBean;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -110,7 +107,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         panelWybor.add(kosztCenaPodst, gridBagConstraints);
 
         radioProcent.setBackground(BaksSessionBean
-            .PANEL_BACKGROUND_PANEL_COLOR);
+            .GREEN_CIEM_COLOR);
         btnGroupCenaProcent.add(radioProcent);
         radioProcent.setText("Procent");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -120,7 +117,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         panelWybor.add(radioProcent, gridBagConstraints);
 
         radioKwota.setBackground(BaksSessionBean
-            .PANEL_BACKGROUND_PANEL_COLOR);
+            .GREEN_CIEM_COLOR);
         btnGroupCenaProcent.add(radioKwota);
         radioKwota.setText("Kwota");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -155,7 +152,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(labelPlus, gridBagConstraints);
 
-        labelProcentZl.setText("zł");
+        labelProcentZl.setText("%");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
@@ -170,6 +167,7 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelWybor.add(labelRowna, gridBagConstraints);
 
+        suma.setEditable(false);
         suma.setBackground(new java.awt.Color(204, 255, 255));
         suma.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         suma.setText("0");
@@ -194,30 +192,29 @@ public class PracaZaplataPanel extends javax.swing.JPanel {
         jPanel3.setBackground(BaksSessionBean
             .PANEL_BACKGROUND_PANEL_COLOR);
         jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        btnDodaj.setText(">");
-        btnDodaj.setPreferredSize(new java.awt.Dimension(60, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel3.add(btnDodaj, gridBagConstraints);
-
-        btnUsun.setText("<");
-        btnUsun.setPreferredSize(new java.awt.Dimension(60, 23));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        jPanel3.add(btnUsun, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weighty = 1.0;
         panelWybor.add(jPanel3, gridBagConstraints);
+
+        btnDodaj.setText(">");
+        btnDodaj.setPreferredSize(new java.awt.Dimension(60, 23));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelWybor.add(btnDodaj, gridBagConstraints);
+
+        btnUsun.setText("X");
+        btnUsun.setPreferredSize(new java.awt.Dimension(60, 23));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelWybor.add(btnUsun, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

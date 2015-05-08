@@ -11,9 +11,9 @@ package Model;
  */
 public enum TO_StatusDefects {
 
-    ZAPLANOWANY(1, "Oczekujący"),
-    W_TRAKCIE(2, "W naprawie"),
-    ZAKONCZONY(3, "Zakończone");
+    ZAPLANOWANY(1, "OCZEKUJĄCY"),
+    W_TRAKCIE(2, "W NAPRAWIE"),
+    ZAKONCZONY(3, "ZAKOŃCZONE");
 
     private int id;
     private String opis;

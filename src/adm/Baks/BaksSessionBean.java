@@ -7,7 +7,6 @@ package adm.Baks;
 
 import Model.TO_Permission;
 import Model.TO_User;
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import dao.DaoFactory;
 import dao.DaoFactoryImpl;
 import db.DatabaseConn;
@@ -34,7 +33,7 @@ public class BaksSessionBean {
     private static TO_User user;
     private static DaoFactory baksFactory;
     private static String dbName;
-    
+
     public static Color BUTTON_PANEL_COLOR;
     public static Color MAIN_BACKGROUND_PANEL_COLOR;
     public static Color PANEL_BACKGROUND_PANEL_COLOR;
@@ -44,9 +43,11 @@ public class BaksSessionBean {
     public static Color GREEN_CIEM_COLOR;
     public static Color GREEN_COLOR;
     public static Color BLUE_COLOR;
-    
+    public static Color TABLE_COLOR;
 
     private static boolean isIDE = false;
+
+    private static boolean NO_DB = false;
 
     private BaksSessionBean() {
         init();
@@ -97,6 +98,7 @@ public class BaksSessionBean {
             GREEN_COLOR = Color.decode(prop.getProperty("greenJasny"));
             GREEN_CIEM_COLOR = Color.decode(prop.getProperty("greenCiemny"));
             BLUE_COLOR = Color.decode(prop.getProperty("blue"));
+            TABLE_COLOR = Color.decode(prop.getProperty("table"));
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
@@ -160,4 +162,23 @@ public class BaksSessionBean {
     public static void setDbName(String dbName) {
         BaksSessionBean.dbName = dbName;
     }
+
+    public static boolean isNO_DB() {
+        return NO_DB;
+    }
+
+    public static void setNO_DB(boolean NO_DB) {
+        BaksSessionBean.NO_DB = NO_DB;
+    }
+
+    public static Color getTABLE_COLOR() {
+        return TABLE_COLOR;
+    }
+
+    public static void setTABLE_COLOR(Color TABLE_COLOR) {
+        BaksSessionBean.TABLE_COLOR = TABLE_COLOR;
+    }
+    
+    
+
 }

@@ -6,13 +6,12 @@
 package naprawa.praca;
 
 import Model.TO_Defect;
+import Model.praca.Czesc;
+import Model.praca.Material;
+import Model.praca.Naprawa;
 import Model.praca.Usluga;
 import adm.Baks.AbstractController;
 import dao.DaoFactory;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ import javax.swing.table.AbstractTableModel;
  * @param <T>
  * @param <M>
  */
-public abstract class ASeriveConntroller<T extends Usluga, M extends AbstractTableModel> extends AbstractController implements MouseListener {
+public abstract class ASeriveConntroller<T extends Usluga, M extends AbstractTableModel> extends AbstractController {
 
     public M model;
     public PracaZaplataPanel widok;
@@ -44,41 +43,26 @@ public abstract class ASeriveConntroller<T extends Usluga, M extends AbstractTab
     public ASeriveConntroller(PracaZaplataPanel widok, Connection connection, DaoFactory daoFactory) {
         this(connection, daoFactory);
         this.widok = widok;
-        initConst();
+        initListeners();
     }
 
-    public void initConst() {
-        widok.getTable().addMouseListener(this);
-
-        widok.getBtnDodaj().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dodajUsluge();
-            }
-        });
-
-        widok.getBtnUsun().addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                usunUsluge();
-            }
-        });
-    }
+    public abstract void initListeners();
 
     public abstract void init(M model, List<T> listaU, TO_Defect defect);
 
     public abstract void dodajUsluge();
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        akcjaWybierz();
-    }
-
     public abstract void akcjaWybierz();
 
     public abstract void usunUsluge();
+
+    public void zapiszUslugeDb(T usluga) {
+        getDaoFactory().getDaoDefect().zapiszUsluge(getConnection(), usluga);
+    }
+
+    public void usunUslugeDB(T usluga) {
+        getDaoFactory().getDaoDefect().deleteService(getConnection(), usluga);
+    }
 
     public void addFireServiceListener(ServiceListener listener) {
         if (!listeners.contains(listener)) {
@@ -86,21 +70,27 @@ public abstract class ASeriveConntroller<T extends Usluga, M extends AbstractTab
         }
     }
 
-    public void fireCzescChangeListener() {
+    public void fireCzescChangeListener(List<Czesc> lista) {
         for (ServiceListener item : listeners) {
-            item.fireCzescTableChanged();
+            item.fireCzescTableChanged(lista);
         }
     }
 
-    public void fireMaterialyChangeListener() {
+    public void fireAktualizujDefect(TO_Defect defect) {
         for (ServiceListener item : listeners) {
-            item.fireMaterialTableChanged();
+            item.fireAktualizujDefect(defect);
         }
     }
 
-    public void fireNaprawaChangeListener() {
+    public void fireMaterialyChangeListener(List<Material> lista) {
         for (ServiceListener item : listeners) {
-            item.fireNaprawaTableChanged();
+            item.fireMaterialTableChanged(lista);
+        }
+    }
+
+    public void fireNaprawaChangeListener(List<Naprawa> lista) {
+        for (ServiceListener item : listeners) {
+            item.fireNaprawaTableChanged(lista);
         }
     }
 

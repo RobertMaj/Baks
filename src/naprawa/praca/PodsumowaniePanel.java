@@ -5,7 +5,9 @@
  */
 package naprawa.praca;
 
+import adm.Baks.BaksSessionBean;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -60,6 +62,22 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        marzaCzesc = new javax.swing.JTextField();
+        cenaCzesc = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        rabat = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btnRabat = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        poRabacieRazem = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(98, 600));
         setPreferredSize(new java.awt.Dimension(240, 600));
@@ -68,7 +86,8 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Części"));
+        jPanel4.setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Części", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel4.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
@@ -102,7 +121,8 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.5;
         jPanel1.add(jPanel4, gridBagConstraints);
 
-        panelNaprawa.setBorder(javax.swing.BorderFactory.createTitledBorder("Naprawa"));
+        panelNaprawa.setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
+        panelNaprawa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Naprawa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         panelNaprawa.setLayout(new java.awt.GridBagLayout());
 
         jScrollPane5.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -149,7 +169,8 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Materiały"));
+        jPanel5.setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Materiały", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel5.setPreferredSize(new java.awt.Dimension(20, 20));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
@@ -183,70 +204,84 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.5;
         jPanel2.add(jPanel5, gridBagConstraints);
 
-        panelPodsumowanie.setBorder(javax.swing.BorderFactory.createTitledBorder("Podsumowanie"));
+        panelPodsumowanie.setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
+        panelPodsumowanie.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Podsumowanie", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         panelPodsumowanie.setMinimumSize(new java.awt.Dimension(23, 23));
-        panelPodsumowanie.setPreferredSize(new java.awt.Dimension(100, 100));
+        panelPodsumowanie.setPreferredSize(new java.awt.Dimension(200, 100));
         panelPodsumowanie.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Części");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel1, gridBagConstraints);
 
+        podsumowanieKoszt.setEditable(false);
         podsumowanieKoszt.setBackground(new java.awt.Color(204, 255, 255));
+        podsumowanieKoszt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         podsumowanieKoszt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
         podsumowanieKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(podsumowanieKoszt, gridBagConstraints);
 
         jLabel2.setText("Materiały");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel2, gridBagConstraints);
 
+        naprawaKoszt.setEditable(false);
+        naprawaKoszt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         naprawaKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(naprawaKoszt, gridBagConstraints);
 
         jLabel3.setText("Naprawa");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel3, gridBagConstraints);
 
+        materialyKoszt.setEditable(false);
+        materialyKoszt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         materialyKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(materialyKoszt, gridBagConstraints);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("PODSUMOWANIE");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(jLabel4, gridBagConstraints);
 
+        czesciKoszt.setEditable(false);
+        czesciKoszt.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         czesciKoszt.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         panelPodsumowanie.add(czesciKoszt, gridBagConstraints);
 
@@ -254,36 +289,164 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         labelDoZaplaty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelDoZaplaty.setText("Do zapłaty:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(34, 0, 9, 0);
         panelPodsumowanie.add(labelDoZaplaty, gridBagConstraints);
 
         jLabel6.setText("zł");
-        panelPodsumowanie.add(jLabel6, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        panelPodsumowanie.add(jLabel6, gridBagConstraints);
 
         jLabel7.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 10;
         panelPodsumowanie.add(jLabel7, gridBagConstraints);
 
         jLabel8.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 8;
         panelPodsumowanie.add(jLabel8, gridBagConstraints);
 
         jLabel9.setText("zł");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
         panelPodsumowanie.add(jLabel9, gridBagConstraints);
 
+        marzaCzesc.setEditable(false);
+        marzaCzesc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        marzaCzesc.setMinimumSize(new java.awt.Dimension(120, 20));
+        marzaCzesc.setPreferredSize(new java.awt.Dimension(120, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(marzaCzesc, gridBagConstraints);
+
+        cenaCzesc.setEditable(false);
+        cenaCzesc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cenaCzesc.setMinimumSize(new java.awt.Dimension(120, 20));
+        cenaCzesc.setPreferredSize(new java.awt.Dimension(120, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(cenaCzesc, gridBagConstraints);
+
+        jLabel5.setText("Cena");
+        jLabel5.setPreferredSize(new java.awt.Dimension(84, 14));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(jLabel5, gridBagConstraints);
+
+        jLabel10.setText("Marża");
+        jLabel10.setPreferredSize(new java.awt.Dimension(84, 14));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(jLabel10, gridBagConstraints);
+
+        jLabel11.setText("zł");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        panelPodsumowanie.add(jLabel11, gridBagConstraints);
+
+        jLabel12.setText("zł");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        panelPodsumowanie.add(jLabel12, gridBagConstraints);
+
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 15, 0);
+        panelPodsumowanie.add(jSeparator1, gridBagConstraints);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("Szczegóły ceny");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        panelPodsumowanie.add(jLabel13, gridBagConstraints);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel14.setText("PODSUMOWANIE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        panelPodsumowanie.add(jLabel14, gridBagConstraints);
+
+        rabat.setEditable(false);
+        rabat.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(rabat, gridBagConstraints);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setText("Rabat");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(jLabel15, gridBagConstraints);
+
+        jLabel16.setText("%");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 9;
+        panelPodsumowanie.add(jLabel16, gridBagConstraints);
+
+        btnRabat.setText("Dodaj rabat");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.insets = new java.awt.Insets(3, 28, 3, 5);
+        panelPodsumowanie.add(btnRabat, gridBagConstraints);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel17.setText("RAZEM");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(jLabel17, gridBagConstraints);
+
+        poRabacieRazem.setEditable(false);
+        poRabacieRazem.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
+        panelPodsumowanie.add(poRabacieRazem, gridBagConstraints);
+
+        jLabel18.setText("zł");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 7;
+        panelPodsumowanie.add(jLabel18, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -303,11 +466,23 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupCenaProcent;
+    private javax.swing.JButton btnRabat;
+    private javax.swing.JTextField cenaCzesc;
     private javax.swing.JTextField czesciKoszt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -319,12 +494,16 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelDoZaplaty;
+    private javax.swing.JTextField marzaCzesc;
     private javax.swing.JTextField materialyKoszt;
     private javax.swing.JTextField naprawaKoszt;
     private javax.swing.JPanel panelNaprawa;
     private javax.swing.JPanel panelPodsumowanie;
+    private javax.swing.JTextField poRabacieRazem;
     private javax.swing.JTextField podsumowanieKoszt;
+    private javax.swing.JTextField rabat;
     private javax.swing.JTable tableCzesci;
     private javax.swing.JTable tableMaterialy;
     private javax.swing.JTable tableNaprawa;
@@ -338,8 +517,40 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
         this.btnGroupCenaProcent = btnGroupCenaProcent;
     }
 
+    public JButton getBtnRabat() {
+        return btnRabat;
+    }
+
+    public void setBtnRabat(JButton btnRabat) {
+        this.btnRabat = btnRabat;
+    }
+
+    public JTextField getRabat() {
+        return rabat;
+    }
+
+    public void setRabat(JTextField rabat) {
+        this.rabat = rabat;
+    }
+
     public JTextField getCzesciKoszt() {
         return czesciKoszt;
+    }
+
+    public JTextField getCenaCzesc() {
+        return cenaCzesc;
+    }
+
+    public void setCenaCzesc(JTextField cenaCzesc) {
+        this.cenaCzesc = cenaCzesc;
+    }
+
+    public JTextField getMarzaCzesc() {
+        return marzaCzesc;
+    }
+
+    public void setMarzaCzesc(JTextField marzaCzesc) {
+        this.marzaCzesc = marzaCzesc;
     }
 
     public void setCzesciKoszt(JTextField czesciKoszt) {
@@ -416,6 +627,14 @@ public class PodsumowaniePanel extends javax.swing.JPanel {
 
     public void setTableNaprawa(JTable tableNaprawa) {
         this.tableNaprawa = tableNaprawa;
+    }
+
+    public JTextField getPoRabacieRazem() {
+        return poRabacieRazem;
+    }
+
+    public void setPoRabacieRazem(JTextField poRabacieRazem) {
+        this.poRabacieRazem = poRabacieRazem;
     }
 
 }

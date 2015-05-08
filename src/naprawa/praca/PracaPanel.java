@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import swing.UITogglePanel;
@@ -34,21 +35,21 @@ public class PracaPanel extends javax.swing.JPanel {
         tglInfoNaprawa.initInternalPanel(infoPanel);
         tglInfoNaprawa.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
         tglInfoNaprawa.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
-        
+
         tglCzesci.initInternalPanel(czesciPanel);
         tglCzesci.getNaglowekPanel().setBackground(BaksSessionBean.GREEN_COLOR);
         tglCzesci.getMainPanel().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
         czesciPanel.getPanelWybor().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
-        
+
         tglKosztNaprawy.initInternalPanel(naprawaPanel);
         tglKosztNaprawy.getNaglowekPanel().setBackground(BaksSessionBean.GREEN_COLOR);
         tglKosztNaprawy.getMainPanel().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
         naprawaPanel.getPanelWybor().setBackground(BaksSessionBean.GREEN_CIEM_COLOR);
-        
+
         tglPodsumowanie.initInternalPanel(podsumowaniePanel);
         tglPodsumowanie.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
         tglPodsumowanie.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
-        
+
         tglMaterialy.initInternalPanel(materialyPanel);
         tglMaterialy.getNaglowekPanel().setBackground(BaksSessionBean.BROWN_COLOR);
         tglMaterialy.getMainPanel().setBackground(BaksSessionBean.BROWN_CIEM_COLOR);
@@ -71,9 +72,10 @@ public class PracaPanel extends javax.swing.JPanel {
         tglInfoNaprawa = new swing.UITogglePanel();
         tglCzesci = new swing.UITogglePanel();
         tglKosztNaprawy = new swing.UITogglePanel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         tglPodsumowanie = new swing.UITogglePanel();
         tglMaterialy = new swing.UITogglePanel();
+        jPanel2 = new javax.swing.JPanel();
+        iconLabel = new javax.swing.JLabel();
         panelPrzyciski = new javax.swing.JPanel();
         btnRezygnuj = new javax.swing.JButton();
         btnZakonczPrace = new javax.swing.JButton();
@@ -116,15 +118,6 @@ public class PracaPanel extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(tglKosztNaprawy, gridBagConstraints);
 
-        filler2.setBackground(BaksSessionBean.MAIN_BACKGROUND_PANEL_COLOR);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(filler2, gridBagConstraints);
-
         tglPodsumowanie.setBackground(new java.awt.Color(132, 191, 180));
         tglPodsumowanie.setTitleFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tglPodsumowanie.setTytul("PODSUMOWANIE");
@@ -144,6 +137,28 @@ public class PracaPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(tglMaterialy, gridBagConstraints);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        iconLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/motocykl.jpeg"))); // NOI18N
+        iconLabel.setToolTipText("");
+        iconLabel.setMaximumSize(new java.awt.Dimension(900, 500));
+        iconLabel.setMinimumSize(new java.awt.Dimension(500, 300));
+        iconLabel.setPreferredSize(new java.awt.Dimension(900, 300));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(iconLabel, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jPanel2, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -196,8 +211,9 @@ public class PracaPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDrukuj;
     private javax.swing.JButton btnRezygnuj;
     private javax.swing.JButton btnZakonczPrace;
-    private javax.swing.Box.Filler filler2;
+    private javax.swing.JLabel iconLabel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelPrzyciski;
     private swing.UITogglePanel tglCzesci;
@@ -231,12 +247,12 @@ public class PracaPanel extends javax.swing.JPanel {
         this.btnZakonczPrace = btnZakonczPrace;
     }
 
-    public Box.Filler getFiller2() {
-        return filler2;
+    public JLabel getIconLabel() {
+        return iconLabel;
     }
 
-    public void setFiller2(Box.Filler filler2) {
-        this.filler2 = filler2;
+    public void setIconLabel(JLabel iconLabel) {
+        this.iconLabel = iconLabel;
     }
 
     public JPanel getjPanel1() {

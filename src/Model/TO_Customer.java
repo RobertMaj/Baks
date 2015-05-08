@@ -50,4 +50,25 @@ public class TO_Customer implements Serializable {
         this.phone = phone;
     }
 
+    String getNameS() {
+        if (this.name == null) {
+            return "";
+        }
+        return name;
+    }
+
+    String getSurnameS() {
+        if (this.surname == null) {
+            return "";
+        }
+        return surname;
+    }
+
+    String getPhoneS() {
+        if (this.phone == null) {
+            return "";
+        }
+        return phone;
+    }
+
 }

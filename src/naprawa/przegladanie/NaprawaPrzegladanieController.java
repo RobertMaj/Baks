@@ -7,6 +7,8 @@ package naprawa.przegladanie;
 
 import Model.TO_Defect;
 import adm.Baks.AbstractController;
+import adm.Baks.BaksSessionBean;
+import aplikacja.AplikacjaController;
 import dao.DaoFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,6 +72,8 @@ public class NaprawaPrzegladanieController extends AbstractController {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     akcjaWybierz();
+                } else if (e.getClickCount() == 1) {
+                    wybranyDefect = ((TableDefectsModel) widok.getTable().getModel()).getDefectAt(widok.getTable().getSelectedRow());
                 }
             }
 
@@ -100,9 +104,27 @@ public class NaprawaPrzegladanieController extends AbstractController {
 
         modelTable = new TableDefectsModel(lista);
         fillTable();
+        widok.getTable().getColumnModel().getColumn(0).setPreferredWidth(30);
+        widok.getTable().getColumnModel().getColumn(0).setWidth(30);
+        widok.getTable().getColumnModel().getColumn(0).setMaxWidth(30);
+        widok.getTable().getColumnModel().getColumn(0).setMinWidth(30);
+
+        widok.getTable().getColumnModel().getColumn(1).setPreferredWidth(450);
+        widok.getTable().getColumnModel().getColumn(1).setWidth(450);
+        widok.getTable().getColumnModel().getColumn(1).setMaxWidth(450);
+        widok.getTable().getColumnModel().getColumn(1).setMinWidth(450);
+        widok.getTable().getColumnModel().getColumn(1).setResizable(false);
+        widok.getTable().revalidate();
     }
 
     public void przejdzDoZakladki(int indx) {
+        if (indx == ZAKL_1) {
+            widok.getTabbedPane().setEnabledAt(ZAKL_1, true);
+            widok.getTabbedPane().setEnabledAt(ZAKL_2, false);
+        } else if (indx == ZAKL_2) {
+            widok.getTabbedPane().setEnabledAt(ZAKL_1, false);
+            widok.getTabbedPane().setEnabledAt(ZAKL_2, true);
+        }
         widok.getTabbedPane().setSelectedIndex(indx);
     }
 
@@ -112,6 +134,8 @@ public class NaprawaPrzegladanieController extends AbstractController {
         PracaController pracaController = new PracaController(getConnection(), getDaoFactory());
         pracaController.setWybranyDefect(wybranyDefect);
         pracaController.setWidok(getPracaPanel());
+        pracaController.initListners();
+        pracaController.setNadrzednyController(this);
         pracaController.akcjaOtworzPrace();
         przejdzDoZakladki(ZAKL_2);
     }
@@ -125,9 +149,11 @@ public class NaprawaPrzegladanieController extends AbstractController {
     }
 
     public void akcjaUsun() {
-        czytajFormatke();
         getDaoFactory().getDaoDefect().deleteDefect(getConnection(), wybranyDefect);
+        modelTable.getList().remove(wybranyDefect);
+        modelTable.fireTableDataChanged();
         odswiezFormatke();
+        BaksSessionBean.getInstance().fireMessage(widok, "Praca", "Poprawnie usunięto");
     }
 
     private void fillTable() {
@@ -136,9 +162,7 @@ public class NaprawaPrzegladanieController extends AbstractController {
     }
 
     public void odswiezFormatke() {
-        lista = getDaoFactory().getDaoDefect().getDefectList(getConnection());
-        modelTable = new TableDefectsModel(lista);
-        fillTable();
+        modelTable.fireTableDataChanged();
     }
 
 //<editor-fold defaultstate="collapsed" desc="Akcesory">

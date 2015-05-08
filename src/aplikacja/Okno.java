@@ -6,6 +6,7 @@
 package aplikacja;
 
 import adm.Baks.BaksSessionBean;
+import java.awt.Toolkit;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -22,6 +23,7 @@ public class Okno extends javax.swing.JFrame {
      */
     public Okno() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("jarIcon.jpg")));
     }
 
     /**
@@ -36,28 +38,23 @@ public class Okno extends javax.swing.JFrame {
 
         panelMain = new javax.swing.JPanel();
         menuBarMain = new javax.swing.JMenuBar();
-        naprawaMenu = new javax.swing.JMenu();
-        zapiszMenuItem = new javax.swing.JMenuItem();
-        przegladajMenuItem = new javax.swing.JMenuItem();
-        historiaMenu = new javax.swing.JMenu();
-        przegladajHistItem = new javax.swing.JMenuItem();
         pracaMenu = new javax.swing.JMenu();
+        przegladajMenuItem = new javax.swing.JMenuItem();
         pracaItem = new javax.swing.JMenuItem();
+        menuPlatnosci = new javax.swing.JMenu();
+        fakturaItem = new javax.swing.JMenuItem();
         mojeDaneMenu = new javax.swing.JMenu();
         edytujDaneItem = new javax.swing.JMenuItem();
         zmianaHaslaItem = new javax.swing.JMenuItem();
         uzytkownicyAdm = new javax.swing.JMenu();
         klienciPrzegladajItem = new javax.swing.JMenuItem();
         dodajUzytkownikaItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        fakturaItem = new javax.swing.JMenuItem();
         wylogujMenu = new javax.swing.JMenu();
         wylogujItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Baks - warsztat motocyklowy");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("BAK's - WARSZTAT MOTOCYKLOWY");
         setMinimumSize(new java.awt.Dimension(1024, 700));
-        setPreferredSize(new java.awt.Dimension(1024, 700));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         panelMain.setBackground(BaksSessionBean
@@ -73,29 +70,23 @@ public class Okno extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(panelMain, gridBagConstraints);
 
-        naprawaMenu.setText("Naprawa");
-
-        zapiszMenuItem.setText("Zapisz");
-        naprawaMenu.add(zapiszMenuItem);
-
-        przegladajMenuItem.setText("Przeglądaj");
-        naprawaMenu.add(przegladajMenuItem);
-
-        menuBarMain.add(naprawaMenu);
-
-        historiaMenu.setText("Historia");
-
-        przegladajHistItem.setText("Przeglądaj");
-        historiaMenu.add(przegladajHistItem);
-
-        menuBarMain.add(historiaMenu);
-
         pracaMenu.setText("Praca");
+
+        przegladajMenuItem.setText("Zapisz");
+        pracaMenu.add(przegladajMenuItem);
 
         pracaItem.setText("Praca");
         pracaMenu.add(pracaItem);
 
         menuBarMain.add(pracaMenu);
+
+        menuPlatnosci.setText("Płatności");
+
+        fakturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        fakturaItem.setText("Faktury");
+        menuPlatnosci.add(fakturaItem);
+
+        menuBarMain.add(menuPlatnosci);
 
         mojeDaneMenu.setText("Moje dane");
 
@@ -116,14 +107,6 @@ public class Okno extends javax.swing.JFrame {
         uzytkownicyAdm.add(dodajUzytkownikaItem);
 
         menuBarMain.add(uzytkownicyAdm);
-
-        jMenu1.setText("Płatności");
-
-        fakturaItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        fakturaItem.setText("Faktury");
-        jMenu1.add(fakturaItem);
-
-        menuBarMain.add(jMenu1);
 
         wylogujMenu.setText("Wyloguj");
         wylogujMenu.setToolTipText("Wyloguj z aplikacji");
@@ -159,16 +142,16 @@ public class Okno extends javax.swing.JFrame {
         this.zmianaHaslaItem = zmianaHaslaItem;
     }
 
+    public JMenu getMenuPlatnosci() {
+        return menuPlatnosci;
+    }
+
+    public void setMenuPlatnosci(JMenu menuPlatnosci) {
+        this.menuPlatnosci = menuPlatnosci;
+    }
+
     public void setEdytujDaneItem(JMenuItem edytujDaneItem) {
         this.edytujDaneItem = edytujDaneItem;
-    }
-
-    public JMenu getHistoriaMenu() {
-        return historiaMenu;
-    }
-
-    public void setHistoriaMenu(JMenu historiaMenu) {
-        this.historiaMenu = historiaMenu;
     }
 
     public JMenuItem getPracaItem() {
@@ -235,28 +218,12 @@ public class Okno extends javax.swing.JFrame {
         this.mojeDaneMenu = mojeDaneMenu;
     }
 
-    public JMenu getNaprawaMenu() {
-        return naprawaMenu;
-    }
-
-    public void setNaprawaMenu(JMenu naprawaMenu) {
-        this.naprawaMenu = naprawaMenu;
-    }
-
-    public JMenuItem getPrzegladajHistItem() {
-        return przegladajHistItem;
-    }
-
     public JMenu getUzytkownicyAdm() {
         return uzytkownicyAdm;
     }
 
     public void setUzytkownicyAdm(JMenu uzytkownicyAdm) {
         this.uzytkownicyAdm = uzytkownicyAdm;
-    }
-
-    public void setPrzegladajHistItem(JMenuItem przegladajHistItem) {
-        this.przegladajHistItem = przegladajHistItem;
     }
 
     public JMenuItem getPrzegladajMenuItem() {
@@ -275,14 +242,6 @@ public class Okno extends javax.swing.JFrame {
         this.wylogujMenu = wylogujMenu;
     }
 
-    public JMenuItem getZapiszMenuItem() {
-        return zapiszMenuItem;
-    }
-
-    public void setZapiszMenuItem(JMenuItem zapiszMenuItem) {
-        this.zapiszMenuItem = zapiszMenuItem;
-    }
-
     public JMenuItem getDodajUzytkownikaItem() {
         return dodajUzytkownikaItem;
     }
@@ -296,21 +255,17 @@ public class Okno extends javax.swing.JFrame {
     private javax.swing.JMenuItem dodajUzytkownikaItem;
     private javax.swing.JMenuItem edytujDaneItem;
     private javax.swing.JMenuItem fakturaItem;
-    private javax.swing.JMenu historiaMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem klienciPrzegladajItem;
     private javax.swing.JMenuBar menuBarMain;
+    private javax.swing.JMenu menuPlatnosci;
     private javax.swing.JMenu mojeDaneMenu;
-    private javax.swing.JMenu naprawaMenu;
     private javax.swing.JPanel panelMain;
     private javax.swing.JMenuItem pracaItem;
     private javax.swing.JMenu pracaMenu;
-    private javax.swing.JMenuItem przegladajHistItem;
     private javax.swing.JMenuItem przegladajMenuItem;
     private javax.swing.JMenu uzytkownicyAdm;
     private javax.swing.JMenuItem wylogujItem;
     private javax.swing.JMenu wylogujMenu;
-    private javax.swing.JMenuItem zapiszMenuItem;
     private javax.swing.JMenuItem zmianaHaslaItem;
     // End of variables declaration//GEN-END:variables
 }

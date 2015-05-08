@@ -21,11 +21,12 @@ public abstract class ServiceImpl<T extends Usluga> extends ASeriveConntroller<T
 
     public ServiceImpl(PracaZaplataPanel widok, Connection connection, DaoFactory daoFactory) {
         super(widok, connection, daoFactory);
-        initConst();
+        initListeners();
     }
 
     @Override
     public void czytajFormatke() {
+        wybranaUsluga.setIdDefect(getWybranyDefect().getId());
         wybranaUsluga.setKoszt(Double.parseDouble(widok.getKosztCenaPodst().getText()));
         wybranaUsluga.setOpis(widok.getOpis().getText());
     }
@@ -39,23 +40,7 @@ public abstract class ServiceImpl<T extends Usluga> extends ASeriveConntroller<T
     }
 
     //<editor-fold defaultstate="collapsed" desc="MouseListener">
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
 //</editor-fold>
-
     @Override
     public void init(ServiceTableModel model, List listaU, TO_Defect defect) {
         setListaUslug(listaU);
@@ -64,10 +49,6 @@ public abstract class ServiceImpl<T extends Usluga> extends ASeriveConntroller<T
         widok.ukryjMarza();
         fillTable();
         wypelnijFormatke();
-    }
-
-    @Override
-    public void akcjaWybierz() {
     }
 
     @Override

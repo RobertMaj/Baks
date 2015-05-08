@@ -29,7 +29,7 @@ public class TableDefectsModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 6;
     }
 
     public TO_Defect getDefectAt(int rowIndex) {
@@ -41,12 +41,21 @@ public class TableDefectsModel extends AbstractTableModel {
         String value = "";
         switch (column) {
             case 0:
-                value = "Klient";
+                value = "Lp.";
                 break;
             case 1:
-                value = "Model";
+                value = "Klient";
                 break;
             case 2:
+                value = "Model";
+                break;
+            case 3:
+                value = "Data przyjęcia";
+                break;
+            case 4:
+                value = "Do zapłaty";
+                break;
+            case 5:
                 value = "Status";
                 break;
         }
@@ -60,12 +69,21 @@ public class TableDefectsModel extends AbstractTableModel {
 
         switch (columnIndex) {
             case 0:
-                value = defect.getMarka();
+                value = Integer.toString(rowIndex + 1) + ".";
                 break;
             case 1:
-                value = defect.getModel();
+                value = defect.getCustomer().getName() + ' ' + defect.getCustomer().getSurname() + ' ' + defect.getCustomer().getPhone();
                 break;
             case 2:
+                value = defect.getModel();
+                break;
+            case 3:
+                value = defect.getData();
+                break;
+            case 4:
+                value = defect.getKoszt();
+                break;
+            case 5:
                 value = defect.getStatus().getOpis();
                 break;
         }

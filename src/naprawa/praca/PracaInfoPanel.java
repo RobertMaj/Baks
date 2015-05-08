@@ -6,6 +6,8 @@
 package naprawa.praca;
 
 import adm.Baks.BaksSessionBean;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,18 +34,18 @@ public class PracaInfoPanel extends javax.swing.JPanel {
 
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        opis = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        model = new javax.swing.JTextField();
+        marka = new javax.swing.JTextField();
+        imie = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        nazwisko = new javax.swing.JTextField();
+        nrTel = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -53,12 +55,13 @@ public class PracaInfoPanel extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(123, 150));
 
-        jTextArea1.setBackground(BaksSessionBean
+        opis.setEditable(false);
+        opis.setBackground(BaksSessionBean
             .BLUE_COLOR);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        opis.setColumns(20);
+        opis.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        opis.setRows(5);
+        jScrollPane1.setViewportView(opis);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -92,31 +95,34 @@ public class PracaInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel3, gridBagConstraints);
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
+        model.setEditable(false);
+        model.setPreferredSize(new java.awt.Dimension(200, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        add(jTextField2, gridBagConstraints);
+        add(model, gridBagConstraints);
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(200, 20));
+        marka.setEditable(false);
+        marka.setPreferredSize(new java.awt.Dimension(200, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        add(jTextField3, gridBagConstraints);
+        add(marka, gridBagConstraints);
 
-        jTextField4.setMinimumSize(new java.awt.Dimension(300, 20));
-        jTextField4.setPreferredSize(new java.awt.Dimension(300, 20));
+        imie.setEditable(false);
+        imie.setMinimumSize(new java.awt.Dimension(300, 20));
+        imie.setPreferredSize(new java.awt.Dimension(300, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        add(jTextField4, gridBagConstraints);
+        add(imie, gridBagConstraints);
 
         jLabel4.setText("Opis");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -141,8 +147,9 @@ public class PracaInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
         add(jLabel6, gridBagConstraints);
 
-        jTextField5.setMinimumSize(new java.awt.Dimension(300, 20));
-        jTextField5.setPreferredSize(new java.awt.Dimension(300, 20));
+        nazwisko.setEditable(false);
+        nazwisko.setMinimumSize(new java.awt.Dimension(300, 20));
+        nazwisko.setPreferredSize(new java.awt.Dimension(300, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
@@ -150,21 +157,23 @@ public class PracaInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        add(jTextField5, gridBagConstraints);
+        add(nazwisko, gridBagConstraints);
 
-        jTextField6.setMinimumSize(new java.awt.Dimension(120, 20));
-        jTextField6.setPreferredSize(new java.awt.Dimension(120, 20));
+        nrTel.setEditable(false);
+        nrTel.setMinimumSize(new java.awt.Dimension(120, 20));
+        nrTel.setPreferredSize(new java.awt.Dimension(120, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(3, 5, 3, 5);
-        add(jTextField6, gridBagConstraints);
+        add(nrTel, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField imie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -172,12 +181,60 @@ public class PracaInfoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField marka;
+    private javax.swing.JTextField model;
+    private javax.swing.JTextField nazwisko;
+    private javax.swing.JTextField nrTel;
+    private javax.swing.JTextArea opis;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getImie() {
+        return imie;
+    }
+
+    public void setImie(JTextField imie) {
+        this.imie = imie;
+    }
+
+    public JTextField getMarka() {
+        return marka;
+    }
+
+    public void setMarka(JTextField marka) {
+        this.marka = marka;
+    }
+
+    public JTextField getModel() {
+        return model;
+    }
+
+    public void setModel(JTextField model) {
+        this.model = model;
+    }
+
+    public JTextField getNazwisko() {
+        return nazwisko;
+    }
+
+    public void setNazwisko(JTextField nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public JTextField getNrTel() {
+        return nrTel;
+    }
+
+    public void setNrTel(JTextField nrTel) {
+        this.nrTel = nrTel;
+    }
+
+    public JTextArea getOpis() {
+        return opis;
+    }
+
+    public void setOpis(JTextArea opis) {
+        this.opis = opis;
+    }
+
 }

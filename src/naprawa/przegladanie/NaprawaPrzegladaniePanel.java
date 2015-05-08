@@ -91,6 +91,7 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        status = new javax.swing.ButtonGroup();
         tabbedPane = new javax.swing.JTabbedPane();
         przegladaniePanel = new javax.swing.JPanel();
         panelBtn = new javax.swing.JPanel();
@@ -104,6 +105,9 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         nazwisko = new javax.swing.JTextField();
         nrTel = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -215,6 +219,24 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
         kryteriaPanel.add(jLabel3, gridBagConstraints);
 
+        status.add(jRadioButton1);
+        jRadioButton1.setText("W TRAKCIE");
+        kryteriaPanel.add(jRadioButton1, new java.awt.GridBagConstraints());
+
+        status.add(jRadioButton2);
+        jRadioButton2.setText("OCZEKUJĄCE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        kryteriaPanel.add(jRadioButton2, gridBagConstraints);
+
+        status.add(jRadioButton3);
+        jRadioButton3.setText("ZAKOŃCZONE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        kryteriaPanel.add(jRadioButton3, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -306,6 +328,9 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel kryteriaPanel;
     private javax.swing.JTextField nazwisko;
@@ -313,6 +338,7 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelBtn;
     private naprawa.praca.PracaPanel pracaPanel;
     private javax.swing.JPanel przegladaniePanel;
+    private javax.swing.ButtonGroup status;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
