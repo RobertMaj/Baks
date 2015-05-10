@@ -18,8 +18,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.BaseFont;
-import static com.itextpdf.text.pdf.PdfName.T;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -32,7 +32,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -272,8 +271,18 @@ public class PracaController extends AbstractController {
                 table.setWidthPercentage(100);
                 table.setSpacingBefore(0f);
                 table.setSpacingAfter(0f);
+                
+                PdfPTable tableO = new PdfPTable(2);
+                tableO.setWidthPercentage(100);
+                tableO.setSpacingBefore(0f);
+                table.setSpacingAfter(0f);
 
-                table.addCell(getNewCell("BAK's Machine\ninż. Błażej Krzciuk\n26-800 Białobrzegi ul. Brzechwy 31\ntel. 509-281-487"));
+                tableO.addCell(getNewCell("BAK's Machine\ninż. Błażej Krzciuk\n26-800 Białobrzegi\nul. Brzechwy 31\ntel. 509-281-487"));
+                Image image =  Image.getInstance(getClass().getClassLoader().getResource("baksZ.jpg"));
+                tableO.addCell(image);
+                
+                table.addCell(tableO);
+                
                 PdfPCell cell1 = getNewCell("Białobrzegi, dn. " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
                 cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 table.addCell(cell1);

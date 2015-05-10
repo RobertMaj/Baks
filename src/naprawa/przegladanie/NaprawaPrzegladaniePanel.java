@@ -219,10 +219,12 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 10, 0, 0);
         kryteriaPanel.add(jLabel3, gridBagConstraints);
 
+        jRadioButton1.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         status.add(jRadioButton1);
         jRadioButton1.setText("W TRAKCIE");
         kryteriaPanel.add(jRadioButton1, new java.awt.GridBagConstraints());
 
+        jRadioButton2.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         status.add(jRadioButton2);
         jRadioButton2.setText("OCZEKUJĄCE");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -230,6 +232,7 @@ public class NaprawaPrzegladaniePanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 2;
         kryteriaPanel.add(jRadioButton2, gridBagConstraints);
 
+        jRadioButton3.setBackground(BaksSessionBean.PANEL_BACKGROUND_PANEL_COLOR);
         status.add(jRadioButton3);
         jRadioButton3.setText("ZAKOŃCZONE");
         gridBagConstraints = new java.awt.GridBagConstraints();
