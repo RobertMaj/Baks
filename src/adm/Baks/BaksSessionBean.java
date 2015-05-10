@@ -82,7 +82,7 @@ public class BaksSessionBean {
 
         try {
 
-            input = new FileInputStream("BinSrc/Baks.properties");
+            input = getClass().getClassLoader().getResourceAsStream("Baks.properties");
 
             // load a properties file
             prop.load(input);
